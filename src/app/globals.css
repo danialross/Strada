@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -17,18 +18,18 @@
 
 @font-face {
   font-family: "Futura";
-  src: url('/public/fonts/Futura-Regular.ttf') format('truetype');
-  font-weight: 400;
+  src: url('/public/fonts/Futura.ttc') format('truetype-collection');
+  font-weight: normal;
   font-style: normal;
-  
 }
 
 @font-face {
   font-family: "Futura";
-  src: url('/public/fonts/Futura-Bold.ttf') format('truetype');
-  font-weight: 700;
+  src: url('/public/fonts/Futura.ttc') format('truetype-collection');
+  font-weight: bold;
   font-style: normal;
 }
+
 
 @media (prefers-color-scheme: dark) {
   :root {
