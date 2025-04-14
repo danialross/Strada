@@ -34,7 +34,7 @@ export default function Sidebar({ isVisible, setIsVisible }: SidebarProps) {
 
   return (
     <div
-      className={`slideEffect absolute bg-white ${isVisible ? "translate-0" : "-translate-x-full"} top-0 left-0 px-[40px] py-[25px] text-primary flex flex-col gap-3 justify-start items-center w-full md:w-[250px] h-screen`}
+      className={`slideEffect fixed bg-white ${isVisible ? "translate-0" : "-translate-x-full"} top-0 left-0 px-[40px] py-[25px] text-primary flex flex-col gap-3 justify-start items-center w-full md:w-[250px] h-screen`}
     >
       <div className={"w-full pb-3"}>
         <MdOutlineClear
