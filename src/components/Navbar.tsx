@@ -2,6 +2,7 @@
 import { ReactNode, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Sidebar from "@/components/Sidebar";
+import Link from "next/link";
 
 type NavbarProps = {
   children: ReactNode;
@@ -27,7 +28,7 @@ export default function Navbar({ children }: NavbarProps) {
             version="1.1"
             viewBox="0 0 1920 1088"
             xmlns="http://www.w3.org/2000/svg"
-            className={"h-full text-primary"}
+            className={"h-full text-primary hidden md:block"}
           >
             <path
               transform="translate(0)"
@@ -81,7 +82,9 @@ export default function Navbar({ children }: NavbarProps) {
             />
           </svg>
 
-          <span className={"text-primary text-2xl"}>Strada</span>
+          <Link className={"text-primary text-2xl"} href={"/"}>
+            Strada
+          </Link>
         </div>
       </div>
       <Sidebar isVisible={isSidebarOpen} setIsVisible={setIsSidebarOpen} />
