@@ -1,11 +1,14 @@
-import { ReactNode } from "react";
+"use client";
+import { ReactNode, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
+import Sidebar from "@/components/Sidebar";
 
 type NavbarProps = {
   children: ReactNode;
 };
 
 export default function Navbar({ children }: NavbarProps) {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   return (
     <div className={"w-full h-[80px] bg-secondary relative"}>
       <div
@@ -13,7 +16,10 @@ export default function Navbar({ children }: NavbarProps) {
           "absolute w-24 flex justify-center top-1/2 -translate-y-1/2 "
         }
       >
-        <GiHamburgerMenu className={"h-6 w-6 text-primary hoverEffect"} />
+        <GiHamburgerMenu
+          className={"h-6 w-6 text-primary hoverEffect"}
+          onClick={() => setIsSidebarOpen(true)}
+        />
       </div>
       <div className={"w-full h-full flex items-center justify-center"}>
         <div className={"h-full flex items-center justify-center hoverEffect"}>
@@ -78,7 +84,7 @@ export default function Navbar({ children }: NavbarProps) {
           <span className={"text-primary text-2xl"}>Strada</span>
         </div>
       </div>
-
+      <Sidebar isVisible={isSidebarOpen} setIsVisible={setIsSidebarOpen} />
       {children}
     </div>
   );
