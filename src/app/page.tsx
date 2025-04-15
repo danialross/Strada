@@ -9,6 +9,7 @@ export default function Home() {
         className={"w-full h-[500px] object-cover"}
       >
         <source src={"/Homepage.mp4"} />
+        Your browser does not support the video tag.
       </video>
       <div
         className={
@@ -64,31 +65,31 @@ export default function Home() {
       </div>
       <div
         className={
-          "bg-secondary w-full h-full min-h-[500px] mobilePadding flex flex-col justify-center items-center"
+          " w-full h-full md:h-[500px] min-h-[500px] mobilePadding flex flex-col justify-center items-center bg-secondary"
         }
       >
-        <span className={"font-bold text-2xl text-black"}>
+        <span className={"font-bold text-2xl text-primary"}>
           Featuring Car Brands
         </span>
         <div
           className={
-            "w-full h-full flex flex-col  md:flex-row justify-center items-center gap-5"
+            "w-full h-full flex flex-col md:flex-row justify-center items-center"
           }
         >
           <img
             src={"/TOYOTA_PNG.png"}
             alt={"Toyota Logo"}
-            className={"w-full md:w-1/3 h-full object-cover scale-70"}
+            className={"w-full max-w-[270px]"}
           />
           <img
             src={"/PORSCHE_PNG.png"}
             alt={"Porsche Logo"}
-            className={"w-full md:w-1/3 h-full object-cover scale-125"}
+            className={"w-full max-w-[450px]"}
           />
           <img
             src={"/HONDA_JPG.jpg"}
             alt={"Honda Logo"}
-            className={"w-full md:w-1/3 h-full object-cover scale-80"}
+            className={"w-full max-w-[270px]"}
           />
         </div>
       </div>
