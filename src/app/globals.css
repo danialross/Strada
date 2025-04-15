@@ -46,6 +46,10 @@
     @apply opacity-50
 }
 
+.mobilePadding {
+    @apply p-8
+}
+
 .slideEffect {
     @apply transition-transform duration-300 ease-in-out opacity-100;
 }
