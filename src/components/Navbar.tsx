@@ -10,6 +10,10 @@ type NavbarProps = {
 
 export default function Navbar({ children }: NavbarProps) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const handleCloseSidebar = () => {
+    setIsSidebarOpen(false);
+  };
   return (
     <div className={"w-full h-[80px] bg-secondary relative"}>
       <div
@@ -82,7 +86,11 @@ export default function Navbar({ children }: NavbarProps) {
             />
           </svg>
 
-          <Link className={"text-primary text-2xl"} href={"/"}>
+          <Link
+            className={"text-primary text-2xl"}
+            href={"/"}
+            onClick={handleCloseSidebar}
+          >
             Strada
           </Link>
         </div>

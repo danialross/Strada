@@ -1,6 +1,6 @@
 import { MdOutlineClear } from "react-icons/md";
 import { FaCaretRight } from "react-icons/fa";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import NestedSidebar from "@/components/NestedSidebar";
 import Link from "next/link";
 
@@ -22,6 +22,7 @@ export default function Sidebar({ isVisible, setIsVisible }: SidebarProps) {
   const handleOpenNestedSidebar = (
     setter: Dispatch<SetStateAction<boolean>>,
   ) => {
+    // check if nested sidebar is already open and close the old one then opens the new one
     handleCloseNestedSidebar();
     setter(true);
   };
@@ -31,6 +32,13 @@ export default function Sidebar({ isVisible, setIsVisible }: SidebarProps) {
     setIsPorscheSidebarOpen(false);
     setIsToyotaSidebarOpen(false);
   };
+
+  //closes nested sidebar if the main is closed
+  useEffect(() => {
+    if (!isVisible) {
+      handleCloseNestedSidebar();
+    }
+  }, [isVisible]);
 
   return (
     <div
@@ -84,23 +92,30 @@ export default function Sidebar({ isVisible, setIsVisible }: SidebarProps) {
         </button>
         <FaCaretRight />
       </div>
-      <Link className={"w-full text-start py-3 hoverEffect"} href={"/about"}>
+      <Link
+        className={"w-full text-start py-3 hoverEffect"}
+        href={"/about"}
+        onClick={handleCloseSidebar}
+      >
         About
       </Link>
       <NestedSidebar
         make={"honda"}
         isVisible={isHondaSidebarOpen}
         setIsVisible={setIsHondaSidebarOpen}
+        setIsAllSidebarVisible={handleCloseSidebar}
       />
       <NestedSidebar
         make={"toyota"}
         isVisible={isToyotaSidebarOpen}
         setIsVisible={setIsToyotaSidebarOpen}
+        setIsAllSidebarVisible={handleCloseSidebar}
       />
       <NestedSidebar
         make={"porsche"}
         isVisible={isPorscheSidebarOpen}
         setIsVisible={setIsPorscheSidebarOpen}
+        setIsAllSidebarVisible={handleCloseSidebar}
       />
     </div>
   );

@@ -3,10 +3,11 @@ import { Make } from "@/types";
 import { Dispatch, SetStateAction } from "react";
 import Link from "next/link";
 
-type NestSidebarProps = {
+type NestedSidebarProps = {
   make: Make;
   isVisible: boolean;
   setIsVisible: Dispatch<SetStateAction<boolean>>;
+  setIsAllSidebarVisible: Dispatch<SetStateAction<boolean>>;
 };
 
 const redirectLinks = {
@@ -28,7 +29,16 @@ export default function NestedSidebar({
   make,
   isVisible,
   setIsVisible,
-}: NestSidebarProps) {
+  setIsAllSidebarVisible,
+}: NestedSidebarProps) {
+  const handleCloseNestedSidebar = () => {
+    setIsVisible(false);
+  };
+
+  const handleCloseAllSidebar = () => {
+    setIsAllSidebarVisible(false);
+  };
+
   return (
     <div
       className={`absolute top-0 left-0 md:left-full slideEffect ease-in-out bg-background px-[40px] py-[25px] w-screen md:w-[250px] h-full ${!isVisible && "translate-y-full"} flex flex-col items-start justify-start gap-3`}
@@ -37,7 +47,7 @@ export default function NestedSidebar({
         <IoMdArrowRoundBack
           size={32}
           className={"opacity-100 md:opacity-0 md:pointer-events-none"}
-          onClick={() => setIsVisible(false)}
+          onClick={handleCloseNestedSidebar}
         />
       </div>
       {make &&
@@ -46,7 +56,9 @@ export default function NestedSidebar({
             className={"w-full flex items-center py-3 hoverEffect"}
             key={link.url}
           >
-            <Link href={link.url}>{link.label}</Link>
+            <Link href={link.url} onClick={handleCloseAllSidebar}>
+              {link.label}
+            </Link>
           </div>
         ))}
     </div>
