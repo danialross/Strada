@@ -17,43 +17,43 @@ export default function Home() {
         }
       >
         <div
-          className={
-            "z-10 w-full h-full max-w-[1100px] text-2xl mobilePadding drop-shadow-black drop-shadow-lg "
-          }
+          className={"z-10 w-full h-full max-w-[1100px] text-lg mobilePadding"}
         >
-          <p className={"font-bold"}>A Tribute to Automotive Excellence</p>
+          <p className={"headerText"}>A Tribute to Automotive Excellence</p>
           <br />
-          <p>
-            Explore the finest in automotive craftsmanship, where cutting-edge
-            engineering meets timeless design. Each car represents more than
-            just performance—it embodies a legacy of innovation, precision, and
-            passion.
-          </p>
-          <br />
-          <p>
-            From the roar of meticulously tuned engines to the aerodynamic
-            mastery shaping every curve, these machines are built to push limits
-            and redefine the driving experience.
-          </p>
-          <br />
-          <p>
-            Discover the stories behind the world’s most exhilarating
-            performance cars, immerse yourself in the beauty of speed, and
-            witness the evolution of automotive excellence.
-          </p>
-          <br />
-          <p>
-            This is more than a showcase—it’s a celebration of performance,
-            power, and the art of speed.
-          </p>
-          <br />
-          <p>
-            This project is a personal exploration of design and development,
-            crafted to showcase visual storytelling through frontend creativity.
-            All imagery featured remains the property of its respective owners
-            and is used here solely for illustrative, non-commercial purposes.
-            No copyright infringement is intended.
-          </p>
+          <div className={"bodyText"}>
+            <p>
+              Explore the finest in automotive craftsmanship, where cutting-edge
+              engineering meets timeless design. Each car represents more than
+              just performance—it embodies a legacy of innovation, precision,
+              and passion.
+            </p>
+            <br />
+            <p>
+              From the roar of meticulously tuned engines to the aerodynamic
+              mastery shaping every curve, these machines are built to push
+              limits and redefine the driving experience.
+            </p>
+            <br />
+            <p>
+              Discover the stories behind the world’s most exhilarating
+              performance cars, immerse yourself in the beauty of speed, and
+              witness the evolution of automotive excellence.
+            </p>
+            <br />
+            <p>
+              This is more than a showcase—it’s a celebration of performance,
+              power, and the art of speed.
+            </p>
+            <br />
+            <p>
+              This project is a personal exploration of design and development,
+              crafted to showcase visual storytelling through frontend
+              creativity. All imagery featured remains the property of its
+              respective owners and is used here solely for illustrative,
+              non-commercial purposes. No copyright infringement is intended.
+            </p>
+          </div>
         </div>
         <div className={"absolute z-5 w-full h-full overflow-hidden"}>
           <img
@@ -65,7 +65,7 @@ export default function Home() {
       </div>
       <div
         className={
-          " w-full h-full md:h-[500px] min-h-[500px] mobilePadding flex flex-col justify-center items-center bg-secondary"
+          " w-full h-full mobilePadding flex flex-col justify-center items-center bg-secondary"
         }
       >
         <span className={"font-bold text-2xl text-primary pb-5"}>
@@ -73,23 +73,23 @@ export default function Home() {
         </span>
         <div
           className={
-            "w-full h-fit flex mobilePadding flex-col md:flex-row gap-10 justify-between items-center"
+            "w-full h-fit flex mobilePadding flex-col md:flex-row gap-20 justify-between items-center"
           }
         >
           <img
             src={"/logo_toyota.png"}
             alt={"Toyota Logo"}
-            className={"w-full max-w-[500px]"}
+            className={"w-full max-w-[400px]"}
           />
           <img
             src={"/logo_porsche.webp"}
             alt={"Porsche Logo"}
-            className={"w-full max-w-[500px]"}
+            className={"w-full max-w-[400px]"}
           />
           <img
             src={"/logo_honda.webp"}
             alt={"Honda Logo"}
-            className={"w-full max-w-[500px]"}
+            className={"w-full max-w-[400px]"}
           />
         </div>
       </div>

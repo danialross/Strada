@@ -50,6 +50,24 @@
     @apply p-8
 }
 
+.bannerText {
+    @apply text-4xl font-bold drop-shadow-black drop-shadow-lg ;
+
+}
+
+.headerText {
+    @apply text-2xl font-bold drop-shadow-black drop-shadow-lg ;
+}
+
+.bodyText {
+    @apply text-lg drop-shadow-black drop-shadow-lg ;
+
+}
+
+.sectionGap {
+    @apply gap-6
+}
+
 .slideEffect {
     @apply transition-transform duration-300 ease-in-out opacity-100;
 }
