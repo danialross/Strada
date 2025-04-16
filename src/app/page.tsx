@@ -68,28 +68,28 @@ export default function Home() {
           " w-full h-full md:h-[500px] min-h-[500px] mobilePadding flex flex-col justify-center items-center bg-secondary"
         }
       >
-        <span className={"font-bold text-2xl text-primary"}>
+        <span className={"font-bold text-2xl text-primary pb-5"}>
           Featuring Car Brands
         </span>
         <div
           className={
-            "w-full h-full flex flex-col md:flex-row justify-center items-center"
+            "w-full h-fit flex mobilePadding flex-col md:flex-row gap-10 justify-between items-center"
           }
         >
           <img
-            src={"/TOYOTA_PNG.png"}
+            src={"/Toyota_Logo.png"}
             alt={"Toyota Logo"}
-            className={"w-full max-w-[270px]"}
+            className={"w-full max-w-[500px]"}
           />
           <img
-            src={"/PORSCHE_PNG.png"}
+            src={"/Porsche_Logo.webp"}
             alt={"Porsche Logo"}
-            className={"w-full max-w-[450px]"}
+            className={"w-full max-w-[500px]"}
           />
           <img
-            src={"/HONDA_JPG.jpg"}
+            src={"/Honda_Logo.webp"}
             alt={"Honda Logo"}
-            className={"w-full max-w-[270px]"}
+            className={"w-full max-w-[500px]"}
           />
         </div>
       </div>
