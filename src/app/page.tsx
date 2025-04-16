@@ -77,17 +77,17 @@ export default function Home() {
           }
         >
           <img
-            src={"/Toyota_Logo.png"}
+            src={"/logo_toyota.png"}
             alt={"Toyota Logo"}
             className={"w-full max-w-[500px]"}
           />
           <img
-            src={"/Porsche_Logo.webp"}
+            src={"/logo_porsche.webp"}
             alt={"Porsche Logo"}
             className={"w-full max-w-[500px]"}
           />
           <img
-            src={"/Honda_Logo.webp"}
+            src={"/logo_honda.webp"}
             alt={"Honda Logo"}
             className={"w-full max-w-[500px]"}
           />
