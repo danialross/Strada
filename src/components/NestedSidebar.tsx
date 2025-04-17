@@ -1,5 +1,5 @@
 import { IoMdArrowRoundBack } from "react-icons/io";
-import { Make } from "@/types";
+import { Make, RedirectLinkData } from "@/types";
 import { Dispatch, SetStateAction } from "react";
 import Link from "next/link";
 
@@ -10,7 +10,11 @@ type NestedSidebarProps = {
   setIsAllSidebarVisible: Dispatch<SetStateAction<boolean>>;
 };
 
-const redirectLinks = {
+type RedirectObject = {
+  [brand: string]: RedirectLinkData[];
+};
+
+const redirectLinks: RedirectObject = {
   toyota: [
     { label: "GR Corolla", url: "/gr-corolla" },
     { label: "GR Yaris", url: "/gr-yaris" },
