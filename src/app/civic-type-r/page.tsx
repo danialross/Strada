@@ -1,12 +1,12 @@
-import { ImageData, SectionData } from "@/types";
+import { ImageViewerProps, SectionData } from "@/types";
 import Section from "@/components/Section";
+import ImageViewer from "@/components/ImageViewer";
 
 export default function Page() {
-  const images: ImageData[] = [
+  const images: ImageViewerProps[] = [
     {
       src: "/typer1.webp",
       alt: "Civic Type R Front View",
-      position: "object-center",
     },
     {
       src: "/typer4.webp",
@@ -76,14 +76,8 @@ export default function Page() {
       <div
         className={`w-full h-full md:h-[400px] flex flex-col md:flex-row justify-center items-center sectionGap`}
       >
-        {images.map(({ src, alt, position }: ImageData) => (
-          <div className={"w-full md:w-1/3 h-full"} key={src}>
-            <img
-              src={src}
-              alt={alt}
-              className={`w-full h-full object-cover ${position}`}
-            />
-          </div>
+        {images.map(({ src, alt, position }: ImageViewerProps) => (
+          <ImageViewer src={src} alt={alt} position={position} key={src} />
         ))}
       </div>
       {sections.map(

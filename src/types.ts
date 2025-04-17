@@ -18,3 +18,9 @@ export type ImageData = {
   alt: string;
   position: "object-left" | "object-right" | "object-center";
 };
+
+export type ImageViewerProps = {
+  src: string;
+  alt: string;
+  position?: "object-left" | "object-right";
+};

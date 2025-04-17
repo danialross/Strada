@@ -68,9 +68,14 @@
     @apply gap-6
 }
 
-.slideEffect {
-    @apply transition-transform duration-300 ease-in-out opacity-100;
+.animateMovement {
+    @apply transition-transform duration-300 ease-in-out;
 }
+
+.animateFade {
+    @apply transition-opacity duration-300 ease-in-out;
+}
+
 
 body {
     background: var(--background);
