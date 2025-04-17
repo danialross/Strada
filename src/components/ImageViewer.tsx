@@ -28,17 +28,21 @@ export default function ImageViewer({ src, alt, position }: ImageViewerProps) {
       <div
         className={`z-100 fixed inset-0 animateFade ${isShowOverlay ? "opacity-100" : "opacity-0 pointer-events-none"}  backdrop-blur-xs flex justify-center items-center`}
       >
-        <div className={"h-4/5 relative"} key={src}>
+        <div
+          className={"h-auto md:h-11/12 w-11/12 md:w-auto relative"}
+          key={src}
+        >
           <MdOutlineClear
-            size={42}
-            className={"absolute top-4 right-4 hoverEffect"}
+            className={
+              "absolute top-2 right-2 md:top-5 md:right-5 hoverEffect w-10 h-10 md:w-12 md:h-12"
+            }
             onClick={() => setIsShowOverlay(false)}
             color={"white"}
           />
           <img
             src={src}
             alt={alt}
-            className={`h-full object-cover ${position}`}
+            className={`w-full md:w-auto h-auto md:h-full object-cover ${position}`}
           />
         </div>
       </div>
