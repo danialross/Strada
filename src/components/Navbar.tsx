@@ -15,7 +15,7 @@ export default function Navbar({ children }: NavbarProps) {
     setIsSidebarOpen(false);
   };
   return (
-    <div className={"w-full h-[80px] bg-secondary relative"}>
+    <div className={"z-10 w-full h-[80px] bg-secondary relative"}>
       <div
         className={
           "absolute w-24 flex justify-center top-1/2 -translate-y-1/2 "
