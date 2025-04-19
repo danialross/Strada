@@ -17,20 +17,16 @@ export default function Section({
 }: SectionProps) {
   return (
     <div
-      className={`bg-primary h-full min-h-[400px] w-full flex flex-col md:flex-row justify-between items-center ${imagePosition === "left" ? "md:flex-row-reverse" : "md:flex-row"}`}
+      className={`bg-primary min-h-[400px] flex flex-col md:flex-row justify-center items-center ${imagePosition === "left" ? "md:flex-row-reverse" : "md:flex-row"}`}
     >
-      <div
-        className={
-          "w-full md:w-1/2 h-full flex justify-center items-center mobilePadding"
-        }
-      >
-        <div className={"w-full flex flex-col sectionGap text-start"}>
+      <div className={"md:w-1/2 mobilePadding"}>
+        <div className={"flex flex-col sectionGap text-start"}>
           <span className="headerText">{header}</span>
           <span className="bodyText">{children}</span>
         </div>
       </div>
-      <div className={"w-full md:w-1/2 h-[400px] overflow-hidden"}>
-        <img src={src} alt={alt} className={"h-full w-full object-cover"} />
+      <div className={"md:w-1/2 overflow-hidden"}>
+        <img src={src} alt={alt} className={"md:h-[510px] object-cover"} />
       </div>
     </div>
   );
