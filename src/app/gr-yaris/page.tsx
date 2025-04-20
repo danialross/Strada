@@ -5,16 +5,16 @@ import Section from "@/components/Section";
 export default function Page() {
   const images: ImageViewerProps[] = [
     {
-      src: "yaris4.jpeg",
+      src: "/yaris4.jpeg",
       alt: "GR Yaris Drifting",
     },
     {
-      src: "yaris1.jpg",
+      src: "/yaris1.jpg",
       alt: "GR Yaris Rear",
       position: "object-left",
     },
     {
-      src: "yaris3.jpg",
+      src: "/yaris3.jpg",
       alt: "GR Yaris On Track",
     },
   ];
@@ -64,10 +64,10 @@ export default function Page() {
         </div>
         <span
           className={
-            "absolute top-1/4 md:top-1/2  left-1/2 md:left-1/5 -translate-1/2 bannerText"
+            "w-[180px] leading-12 md:w-full text-center absolute top-1/4 md:top-1/2 left-1/2 md:left-1/5 -translate-1/2 bannerText"
           }
         >
-          GR Yaris
+          Toyota GR Yaris
         </span>
       </div>
       {

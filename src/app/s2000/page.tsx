@@ -5,15 +5,15 @@ import Section from "@/components/Section";
 export default function Page() {
   const images: ImageViewerProps[] = [
     {
-      src: "s2k1.jpeg",
+      src: "/s2k1.jpeg",
       alt: "Honda S2000 In The Canyons",
     },
     {
-      src: "s2k2.webp",
+      src: "/s2k2.webp",
       alt: "Yellow Honda S2000",
     },
     {
-      src: "s2k3.jpg",
+      src: "/s2k3.jpg",
       alt: "Honda S2000 Rear",
     },
   ];
