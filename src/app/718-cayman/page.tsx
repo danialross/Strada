@@ -67,15 +67,13 @@ export default function Page() {
           <span className={"text-nowrap"}> 718 Cayman</span>
         </div>
       </div>
-      {
-        <div
-          className={`w-full h-full md:h-[400px] flex flex-col md:flex-row justify-center items-center sectionGap`}
-        >
-          {images.map(({ src, alt, position }: ImageViewerProps) => (
-            <ImageViewer src={src} alt={alt} position={position} key={src} />
-          ))}
-        </div>
-      }
+      <div
+        className={`w-full h-full md:h-[400px] flex flex-col md:flex-row justify-center items-center sectionGap`}
+      >
+        {images.map(({ src, alt, position }: ImageViewerProps) => (
+          <ImageViewer src={src} alt={alt} position={position} key={src} />
+        ))}
+      </div>
       {sections.map(
         ({ header, src, alt, imagePosition, body }: SectionData) => (
           <Section

@@ -2,7 +2,9 @@
 import { useEffect, useState } from "react";
 import { MdOutlineClear } from "react-icons/md";
 import { ImageViewerProps } from "@/types";
+import Image from "next/image";
 
+//parent needs to be relative
 export default function ImageViewer({ src, alt, position }: ImageViewerProps) {
   const [isShowOverlay, setIsShowOverlay] = useState(false);
   useEffect(() => {
@@ -14,30 +16,33 @@ export default function ImageViewer({ src, alt, position }: ImageViewerProps) {
   }, [isShowOverlay]);
   return (
     <>
-      <div
-        className={"w-full md:w-1/3 h-full overflow-hidden"}
-        key={src}
+      <Image
+        src={src}
+        sizes={"100vw"}
+        alt={alt}
+        fill
+        className={`object-cover ${position} hover:scale-115 animateMovement`}
         onClick={() => setIsShowOverlay(true)}
-      >
-        <img
-          src={src}
-          alt={alt}
-          className={`w-full h-full object-cover ${position} hover:scale-115 animateMovement`}
-        />
-      </div>
+      />
       <div
-        className={`z-100 fixed inset-0 animateFade ${isShowOverlay ? "opacity-100" : "opacity-0 pointer-events-none"}  backdrop-blur-xs flex justify-center items-center`}
+        className={`w-screen h-screen z-100 fixed inset-0 animateFade ${isShowOverlay ? "opacity-100" : "opacity-0 pointer-events-none"}  backdrop-blur-xs flex justify-center items-center`}
       >
-        <div className={"flex items-center justify-center"}>
-          <div className={"p-4 relative "}>
+        <div className={"w-full h-full flex items-center justify-center"}>
+          <div className={"w-4/5 h-4/5 relative"}>
+            <Image
+              fill
+              src={src}
+              sizes={"100vw"}
+              alt={alt}
+              className={`object-contain ${position}`}
+            />
             <MdOutlineClear
               className={
-                "absolute top-4 right-4 md:top-5 md:right-5 hoverEffect w-10 h-10 md:w-12 md:h-12"
+                "absolute top-0 right-0 -translate-y-full hoverEffect w-10 h-10 md:w-12 md:h-12"
               }
               onClick={() => setIsShowOverlay(false)}
               color={"white"}
             />
-            <img src={src} alt={alt} className={`object-cover ${position}`} />
           </div>
         </div>
       </div>

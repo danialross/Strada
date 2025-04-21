@@ -1,5 +1,6 @@
 import ImageViewer from "@/components/ImageViewer";
 import { ImageViewerProps } from "@/types";
+import Image from "next/image";
 
 export default function Page() {
   const images: ImageViewerProps[] = [
@@ -19,24 +20,24 @@ export default function Page() {
 
   return (
     <div
-      className={"flex flex-col md:grid md:grid-cols-3 bg-secondary sectionGap"}
+      className={
+        " flex flex-col md:grid md:grid-cols-3 bg-secondary sectionGap"
+      }
     >
       <div
         className={
-          "col-span-3 relative h-[400px] overflow-hidden flex items-center justify-center"
+          "flex justify-center items-center col-span-3 relative h-[400px] overflow-hidden border border-black"
         }
       >
-        <span className={"z-10 bannerText"}>About</span>
-
-        <img
+        <span className={"z-5 bannerText"}>About</span>
+        <Image
           src={"/about1.jpg"}
           alt={"About Banner"}
-          className={
-            "h-[400px] w-full absolute top-0 left-0 z-1  object-cover object-top"
-          }
+          fill
+          className={"object-cover object-top"}
         />
       </div>
-      <div className={"md:w-screen md:pr-[50px] col-span-1"}>
+      <div className={"relative h-[400px] md:h-auto md:w-full overflow-hidden"}>
         <ImageViewer src={"/about2.webp"} alt={"BMW M3"} />
       </div>
       <div className={"col-span-2 relative flex items-center justify-center"}>
@@ -49,7 +50,7 @@ export default function Page() {
             className={"w-full h-full object-cover blur-xs scale-110"}
           />
         </div>
-        <div className={"z-10 w-full h-full mobilePadding"}>
+        <div className={"z-5 w-full h-full mobilePadding"}>
           <p className={"headerText"}>Strada</p>
           <br />
           <div className={"bodyText"}>
@@ -79,10 +80,15 @@ export default function Page() {
         </div>
       </div>
       <div
-        className={`w-full col-span-3 h-full flex flex-col md:flex-row justify-center items-center sectionGap`}
+        className={`w-full h-full flex flex-col md:flex-row col-span-3 sectionGap`}
       >
         {images.map(({ src, alt }: ImageViewerProps) => (
-          <ImageViewer src={src} alt={alt} key={src} />
+          <div
+            className={"relative w-full h-[400px] border overflow-hidden"}
+            key={src}
+          >
+            <ImageViewer src={src} alt={alt} key={src} />
+          </div>
         ))}
       </div>
     </div>
