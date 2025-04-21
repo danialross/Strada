@@ -26,7 +26,11 @@ export default function Section({
         </div>
       </div>
       <div className={"md:w-1/2 overflow-hidden"}>
-        <img src={src} alt={alt} className={"md:h-[510px] object-cover"} />
+        <img
+          src={src}
+          alt={alt}
+          className={"md:h-[510px] w-full object-cover"}
+        />
       </div>
     </div>
   );

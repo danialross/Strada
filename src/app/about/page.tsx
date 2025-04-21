@@ -1,5 +1,8 @@
+import ImageViewer from "@/components/ImageViewer";
+import { ImageViewerProps } from "@/types";
+
 export default function Page() {
-  const images = [
+  const images: ImageViewerProps[] = [
     {
       src: "/about5.webp",
       alt: "Subaru Impreza WRX",
@@ -33,17 +36,8 @@ export default function Page() {
           }
         />
       </div>
-
-      <div
-        className={
-          "w-full overflow-hidden flex flex-col md:col-span-1 justify-center items-center sectionGap"
-        }
-      >
-        <img
-          src={"/about2.webp"}
-          alt={"BMW M3"}
-          className={"w-full h-full object-cover"}
-        />
+      <div className={"md:w-screen md:pr-[50px] col-span-1"}>
+        <ImageViewer src={"/about2.webp"} alt={"BMW M3"} />
       </div>
       <div className={"col-span-2 relative flex items-center justify-center"}>
         <div
@@ -84,19 +78,13 @@ export default function Page() {
           </div>
         </div>
       </div>
-      {images.map((image) => (
-        <div
-          className={
-            "w-full flex flex-col md:flex-row sectionGap md:col-span-1 overflow-hidden"
-          }
-        >
-          <img
-            src={image.src}
-            alt={image.alt}
-            className={"w-full h-full object-cover"}
-          />
-        </div>
-      ))}
+      <div
+        className={`w-full col-span-3 h-full flex flex-col md:flex-row justify-center items-center sectionGap`}
+      >
+        {images.map(({ src, alt }: ImageViewerProps) => (
+          <ImageViewer src={src} alt={alt} key={src} />
+        ))}
+      </div>
     </div>
   );
 }
