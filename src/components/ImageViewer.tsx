@@ -44,7 +44,6 @@ export default function ImageViewer({ src, alt, position }: ImageViewerProps) {
             <Image
               fill
               src={src}
-              sizes="(max-width: 250px) 50vw, 100vw"
               alt={alt}
               className={`object-contain md:object-cover ${position}`}
             />
