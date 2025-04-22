@@ -42,7 +42,7 @@ export default function Sidebar({ isVisible, setIsVisible }: SidebarProps) {
 
   return (
     <div
-      className={`animateMovement fixed z-10 bg-white ${isVisible ? "left-0" : "-left-full"} top-0 px-[40px] py-[25px] text-primary flex flex-col gap-3 justify-start items-center w-full md:w-[250px] h-screen`}
+      className={`animateMovement fixed z-10 bg-white will-change-transform ${isVisible ? "translate-x-0" : "-translate-x-full"} left-0 top-0 px-[40px] py-[25px] text-primary flex flex-col gap-3 justify-start items-center w-full md:w-[250px] h-screen`}
     >
       <div className={"w-full pb-3"}>
         <MdOutlineClear

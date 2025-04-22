@@ -40,16 +40,18 @@ export default function Page() {
       <div className={"relative h-[400px] md:h-auto md:w-full overflow-hidden"}>
         <ImageViewer src={"/about2.webp"} alt={"BMW M3"} />
       </div>
-      <div className={"col-span-2 relative flex items-center justify-center"}>
-        <div
-          className={"absolute w-full h-full left-0 top-0 z-1 overflow-hidden"}
-        >
-          <img
-            src={"/about6.jpg"}
-            alt={"Race Track Image"}
-            className={"w-full h-full object-cover blur-xs scale-110"}
-          />
-        </div>
+      <div
+        className={
+          "col-span-2 relative flex items-center justify-center overflow-hidden"
+        }
+      >
+        <Image
+          src={"/about6.jpg"}
+          alt={"Race Track Image"}
+          fill
+          className={"object-cover blur-xs scale-110"}
+        />
+
         <div className={"z-5 w-full h-full mobilePadding"}>
           <p className={"headerText"}>Strada</p>
           <br />

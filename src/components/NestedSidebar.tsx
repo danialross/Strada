@@ -45,7 +45,7 @@ export default function NestedSidebar({
 
   return (
     <div
-      className={`z-20 absolute top-0 left-0 md:left-full animateMovement bg-background px-[40px] py-[25px] w-screen md:w-[250px] h-full ${!isVisible && "translate-y-full"} flex flex-col items-start justify-start gap-3`}
+      className={`z-20 absolute top-0 left-0 md:left-full animateMovement bg-background px-[40px] py-[25px] w-screen md:w-[250px] h-full will-change-transform ${isVisible ? "translate-y-0" : "translate-y-full"} flex flex-col items-start justify-start gap-3`}
     >
       <div className={"w-full pb-3"}>
         <IoMdArrowRoundBack

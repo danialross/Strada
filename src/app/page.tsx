@@ -1,3 +1,22 @@
+import Image from "next/image";
+
+type Logo = { src: string; alt: string };
+
+const logos: Logo[] = [
+  {
+    src: "/logo_honda.webp",
+    alt: "Honda Logo",
+  },
+  {
+    src: "/logo_porsche.webp",
+    alt: "Porsche Logo",
+  },
+  {
+    src: "/logo_toyota.png",
+    alt: "Toyota Logo",
+  },
+];
+
 export default function Home() {
   return (
     <div className={" bg-primary flex flex-col justify-center items-center"}>
@@ -17,7 +36,7 @@ export default function Home() {
         }
       >
         <div
-          className={"z-10 w-full h-full max-w-[1100px] text-lg mobilePadding"}
+          className={"z-5 w-full h-full max-w-[1100px] text-lg mobilePadding"}
         >
           <p className={"headerText"}>A Tribute to Automotive Excellence</p>
           <br />
@@ -55,7 +74,7 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div className={"absolute z-5 w-full h-full overflow-hidden"}>
+        <div className={"absolute z-1 w-full h-full overflow-hidden"}>
           <img
             src={"/nurburgring.jpeg"}
             className={" w-full h-full object-cover  blur-xs scale-110 "}
@@ -73,24 +92,20 @@ export default function Home() {
         </span>
         <div
           className={
-            "w-full h-fit flex mobilePadding flex-col md:flex-row gap-20 justify-between items-center"
+            "w-full flex flex-col md:flex-row gap-20 justify-center items-center"
           }
         >
-          <img
-            src={"/logo_toyota.png"}
-            alt={"Toyota Logo"}
-            className={"w-full max-w-[400px]"}
-          />
-          <img
-            src={"/logo_porsche.webp"}
-            alt={"Porsche Logo"}
-            className={"w-full max-w-[400px]"}
-          />
-          <img
-            src={"/logo_honda.webp"}
-            alt={"Honda Logo"}
-            className={"w-full max-w-[400px]"}
-          />
+          {logos.map(({ src, alt }: Logo) => (
+            <div className={"relative w-full h-[200px] m"} key={src}>
+              <Image
+                fill
+                sizes="(max-width: 250px) 50vw, 100vw"
+                src={src}
+                alt={alt}
+                className={"object-contain"}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </div>
