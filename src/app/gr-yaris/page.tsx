@@ -75,7 +75,14 @@ export default function Page() {
           className={`w-full h-full md:h-[400px] flex flex-col md:flex-row justify-center items-center sectionGap`}
         >
           {images.map(({ src, alt, position }: ImageViewerProps) => (
-            <ImageViewer src={src} alt={alt} position={position} key={src} />
+            <div
+              className={
+                "w-full h-[300px] md:h-[400px] relative overflow-hidden"
+              }
+              key={src}
+            >
+              <ImageViewer src={src} alt={alt} position={position} />
+            </div>
           ))}
         </div>
       }

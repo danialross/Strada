@@ -1,11 +1,13 @@
 "use client";
-import { useEffect, useState } from "react";
-import { MdOutlineClear } from "react-icons/md";
+import { useEffect, useRef, useState } from "react";
+import { IoIosClose } from "react-icons/io";
 import { ImageViewerProps } from "@/types";
 import Image from "next/image";
 
 //parent needs to be relative
 export default function ImageViewer({ src, alt, position }: ImageViewerProps) {
+  const imageRef = useRef<HTMLImageElement | null>(null);
+  const [imageWidth, setImageWidth] = useState(0);
   const [isShowOverlay, setIsShowOverlay] = useState(false);
   useEffect(() => {
     if (isShowOverlay) {
@@ -14,6 +16,11 @@ export default function ImageViewer({ src, alt, position }: ImageViewerProps) {
       document.body.style.overflowY = "auto";
     }
   }, [isShowOverlay]);
+
+  useEffect(() => {
+    if (imageRef) {
+    }
+  }, [imageRef]);
   return (
     <>
       <Image
@@ -27,21 +34,25 @@ export default function ImageViewer({ src, alt, position }: ImageViewerProps) {
       <div
         className={`w-screen h-screen z-100 fixed inset-0 animateFade ${isShowOverlay ? "opacity-100" : "opacity-0 pointer-events-none"}  backdrop-blur-xs flex justify-center items-center`}
       >
-        <div className={"w-full h-full flex items-center justify-center"}>
-          <div className={"w-4/5 h-4/5 relative"}>
+        <div
+          className={"w-full h-full flex flex-col items-center justify-center"}
+        >
+          <div
+            className={"w-4/5 h-4/5 relative flex justify-center"}
+            ref={imageRef}
+          >
             <Image
               fill
               src={src}
-              sizes={"100vw"}
+              sizes="(max-width: 250px) 50vw, 100vw"
               alt={alt}
-              className={`object-contain ${position}`}
+              className={`object-contain md:object-cover ${position}`}
             />
-            <MdOutlineClear
+            <IoIosClose
               className={
-                "absolute top-0 right-0 -translate-y-full hoverEffect w-10 h-10 md:w-12 md:h-12"
+                "absolute top-1/2 -right-4 -translate-y-1/2 translate-x-full hoverEffect w-10 h-10 md:w-12 md:h-12 bg-white text-primary border-primary border-2 rounded-md"
               }
               onClick={() => setIsShowOverlay(false)}
-              color={"white"}
             />
           </div>
         </div>
