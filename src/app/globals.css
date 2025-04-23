@@ -84,7 +84,7 @@ body {
 }
 
 
-@keyframes introMovingAnimation {
+@keyframes moveFullSize {
     0% {
         transform: translateY(0);
     }
@@ -96,11 +96,10 @@ body {
     }
     100% {
         transform: translateY(-100%);
-
     }
 }
 
-@keyframes introFadingAnimation {
+@keyframes fadeOut {
     0% {
         opacity: 100;
     }
@@ -112,14 +111,14 @@ body {
     }
     100% {
         opacity: 0;
+        pointer-events: none;
     }
 }
 
 .animateBar {
-    animation: introMovingAnimation 3s ease-in-out forwards;
+    animation: moveFullSize 3s ease-in-out forwards;
 }
 
-
-.animatePage {
-    animation: introFadingAnimation 3s ease-in-out forwards;
+.animateFadeOut {
+    animation: fadeOut 3s ease-in-out forwards;
 }

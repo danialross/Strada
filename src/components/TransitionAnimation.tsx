@@ -1,7 +1,12 @@
+"use client";
+import { usePathname } from "next/navigation";
+
 export default function TransitionAnimation() {
+  const path = usePathname();
   return (
     <div
-      className={`z-30 fixed inset-0 flex items-center justify-center bg-primary text-8xl animatePage`}
+      className={`z-30 fixed inset-0 flex items-center justify-center bg-primary text-8xl animateFadeOut`}
+      key={path}
     >
       <div className={"relative h-1/2"}>
         <svg

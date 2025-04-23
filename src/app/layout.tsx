@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import TransitionAnimation from "@/components/TransitionAnimation";
 
 export const metadata: Metadata = {
   title: "Strada",
@@ -15,7 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={"min-w-[360px] min-h-[640px]"}>
-        <Navbar>{children}</Navbar>
+        <Navbar>
+          <TransitionAnimation />
+          {children}
+        </Navbar>
       </body>
     </html>
   );
