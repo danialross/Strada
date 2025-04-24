@@ -8,7 +8,7 @@ export default function TransitionAnimation() {
       className={`z-30 fixed inset-0 flex items-center justify-center bg-primary text-8xl animateFadeOut`}
       key={path}
     >
-      <div className={"relative h-1/2"}>
+      <div className={"relative h-1/4 md:h-1/2"}>
         <svg
           version="1.1"
           viewBox="0 0 1920 1088"

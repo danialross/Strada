@@ -42,7 +42,7 @@ export default function Page() {
         muted
         autoPlay
         playsInline
-        className={"col-span-3 w-full h-full md:max-h-[400px] object-cover"}
+        className={"col-span-3 w-full h-[300px] md:max-h-[400px] object-cover"}
       >
         <source src={"/about.mp4"} type="video/mp4" />
         Your browser does not support the video tag.
