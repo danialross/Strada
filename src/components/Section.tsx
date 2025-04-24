@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import Image from "next/image";
 
 type SectionProps = {
   header: string;
@@ -25,11 +26,13 @@ export default function Section({
           <span className="bodyText">{children}</span>
         </div>
       </div>
-      <div className={"md:w-1/2 overflow-hidden"}>
-        <img
+      <div className={"relative w-full md:w-1/2 h-[400px] overflow-hidden"}>
+        <Image
           src={src}
           alt={alt}
-          className={"md:h-[510px] w-full object-cover"}
+          sizes={"(max-width: 768px) 50vw, 100vw"}
+          fill
+          className={"object-cover"}
         />
       </div>
     </div>

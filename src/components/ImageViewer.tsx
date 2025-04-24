@@ -25,7 +25,7 @@ export default function ImageViewer({ src, alt, position }: ImageViewerProps) {
     <>
       <Image
         src={src}
-        sizes={"100vw"}
+        sizes={"(max-width: 768px) 100vw, 50vw"}
         alt={alt}
         fill
         className={`object-cover ${position} hover:scale-115 animateMovement`}

@@ -88,10 +88,7 @@ body {
     0% {
         transform: translateY(0);
     }
-    33% {
-        transform: translateY(0);
-    }
-    66% {
+    50% {
         transform: translateY(-100%);
     }
     100% {
@@ -116,9 +113,9 @@ body {
 }
 
 .animateBar {
-    animation: moveFullSize 3s ease-in-out forwards;
+    animation: moveFullSize 2s ease-in-out forwards;
 }
 
 .animateFadeOut {
-    animation: fadeOut 3s ease-in-out forwards;
+    animation: fadeOut 2s ease-in-out forwards;
 }
