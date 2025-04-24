@@ -84,7 +84,7 @@ export default function Home() {
       </div>
       <div
         className={
-          " w-full h-full mobilePadding flex flex-col justify-center items-center bg-secondary"
+          " w-full h-[500px] mobilePadding flex flex-col justify-center items-center bg-secondary"
         }
       >
         <span className={"font-bold text-2xl text-primary pb-5"}>
@@ -96,13 +96,13 @@ export default function Home() {
           }
         >
           {logos.map(({ src, alt }: Logo) => (
-            <div className={"relative w-full h-[200px] m"} key={src}>
+            <div className={"relative w-full h-[350px]"} key={src}>
               <Image
                 fill
-                sizes="(max-width: 250px) 50vw, 100vw"
+                sizes="33vw"
                 src={src}
                 alt={alt}
-                className={"object-contain"}
+                className={"object-cover md:object-contain"}
               />
             </div>
           ))}
