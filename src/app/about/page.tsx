@@ -37,6 +37,16 @@ export default function Page() {
           className={"object-cover object-top"}
         />
       </div>
+      <video
+        loop
+        muted
+        autoPlay
+        playsInline
+        className={"col-span-3 w-full h-full md:max-h-[400px] object-cover"}
+      >
+        <source src={"/about.mp4"} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
       <div className={"relative h-[400px] md:h-auto md:w-full overflow-hidden"}>
         <ImageViewer src={"/about2.webp"} alt={"BMW M3"} />
       </div>
