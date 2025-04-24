@@ -1,6 +1,7 @@
 import { ImageViewerProps, SectionData } from "@/types";
 import ImageViewer from "@/components/ImageViewer";
 import Section from "@/components/Section";
+import Image from "next/image";
 
 export default function Page() {
   const images: ImageViewerProps[] = [
@@ -21,7 +22,7 @@ export default function Page() {
   const sections: SectionData[] = [
     {
       header: "Overview",
-      body: "The Porsche 911 Carrera (992) is the entry point into the legendary 911 lineup, blending timeless design with modern performance. Retaining its rear-engine layout, the 992 Carrera delivers an exhilarating driving experience with precision handling, a refined interior, and cutting-edge technology. Perfect for both daily driving and spirited weekend runs, the Carrera stays true to Porsche’s racing DNA while offering everyday usability.",
+      body: "The Porsche 911 Carrera (992) is the entry point into the legendary 911 lineup, blending timeless design with modern performance. Retaining its rear-engine layout, the 992 Carrera delivers an exhilarating driving experience with precision handling, a refined interior, and cutting-edge technology. Perfect for both daily driving and spirited weekend runs.",
       src: "/9111.jpg",
       alt: "911 Speeding",
       imagePosition: "right",
@@ -52,12 +53,12 @@ export default function Page() {
   return (
     <div className={"bg-secondary flex flex-col sectionGap"}>
       <div className={"w-full h-[400px] overflow-hidden relative"}>
-        <img
+        <Image
+          width={5500}
+          height={3094}
           src={"/911Banner.jpg"}
           alt={"911 Carrera"}
-          className={
-            "absolute top-1/2 left-1/2 -translate-1/2 w-full h-full object-cover"
-          }
+          className={"w-full h-full object-cover"}
         />
         <div
           className={

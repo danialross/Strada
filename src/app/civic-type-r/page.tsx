@@ -1,6 +1,7 @@
 import { ImageViewerProps, SectionData } from "@/types";
 import Section from "@/components/Section";
 import ImageViewer from "@/components/ImageViewer";
+import Image from "next/image";
 
 export default function Page() {
   const images: ImageViewerProps[] = [
@@ -59,7 +60,9 @@ export default function Page() {
     >
       <div className={"w-full h-[400px] relative"}>
         <div className={"absolute top-0 left-0 w-full h-full"}>
-          <img
+          <Image
+            width={1900}
+            height={791}
             src={"/typerBanner.jpeg"}
             alt={"Civic Type R Banner"}
             className={"w-full h-full object-cover object-right"}
@@ -67,7 +70,7 @@ export default function Page() {
         </div>
         <span
           className={
-            "absolute w-[250px] top-1/10  md:top-1/2 md:-translate-y-1/2 left-1/2 -translate-x-1/2 md: md:left-1/10 md:translate-x-0 bannerText text-center "
+            "absolute w-[250px] lg:w-auto top-1/10  md:top-1/2 md:-translate-y-1/2 left-1/2 -translate-x-1/2 md: md:left-1/10 md:translate-x-0 bannerText text-center "
           }
         >
           Honda Civic Type R FL5

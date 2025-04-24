@@ -1,6 +1,7 @@
 import { ImageViewerProps, SectionData } from "@/types";
 import ImageViewer from "@/components/ImageViewer";
 import Section from "@/components/Section";
+import Image from "next/image";
 
 export default function Page() {
   const images: ImageViewerProps[] = [
@@ -51,11 +52,14 @@ export default function Page() {
 
   return (
     <div className={"bg-secondary flex flex-col sectionGap"}>
-      <div className={" w-full h-full lg:h-[400px] overflow-hidden"}>
-        <img
+      <div className={"relative overflow-hidden flex items-center"}>
+        <Image
+          width={1176}
+          height={350}
+          sizes={"100vw"}
           src={"/s2kBanner.jpg"}
           alt={"Honda S2000 Banner"}
-          className={"w-full h-full object-cover object-left"}
+          className={"[object-cover object-left"}
         />
       </div>
       {

@@ -1,6 +1,7 @@
 import { ImageViewerProps, SectionData } from "@/types";
 import ImageViewer from "@/components/ImageViewer";
 import Section from "@/components/Section";
+import Image from "next/image";
 
 export default function Page() {
   const images: ImageViewerProps[] = [
@@ -22,7 +23,7 @@ export default function Page() {
   const sections: SectionData[] = [
     {
       header: "Overview",
-      body: "The Toyota GR Corolla is a rally-bred hot hatch, engineered by Gazoo Racing to deliver raw power, precision handling, and all-weather capability. Unlike the standard Corolla, the GR model is built from the ground up for performance, featuring a turbocharged engine, lightweight chassis, and an advanced all-wheel-drive system. Designed for enthusiasts, it offers track-ready performance while remaining practical for daily driving.",
+      body: "The Toyota GR Corolla is a rally-bred hot hatch, engineered by Gazoo Racing to deliver raw power, precision handling, and all-weather capability. Unlike the standard Corolla, the GR model is built from the ground up for performance. Designed for enthusiasts, it offers track-ready performance while remaining practical for daily driving.",
       src: "/corolla4.jpg",
       alt: "GR Corolla On Dirt",
       imagePosition: "right",
@@ -52,7 +53,9 @@ export default function Page() {
 
   return (
     <div className={"bg-secondary flex flex-col sectionGap"}>
-      <img
+      <Image
+        width={1920}
+        height={600}
         src={"/corollaBanner.webp"}
         alt={"GR Corolla Banner"}
         className={"object-cover"}

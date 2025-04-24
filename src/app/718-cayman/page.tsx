@@ -1,6 +1,7 @@
 import { ImageViewerProps, SectionData } from "@/types";
 import ImageViewer from "@/components/ImageViewer";
 import Section from "@/components/Section";
+import Image from "next/image";
 
 export default function Page() {
   const images: ImageViewerProps[] = [
@@ -21,7 +22,7 @@ export default function Page() {
   const sections: SectionData[] = [
     {
       header: "Overview",
-      body: "The Porsche 911 Carrera (992) is the entry point into the legendary 911 lineup, blending timeless design with modern performance. Retaining its rear-engine layout, the 992 Carrera delivers an exhilarating driving experience with precision handling, a refined interior, and cutting-edge technology. Perfect for both daily driving and spirited weekend runs, the Carrera stays true to Porsche’s racing DNA while offering everyday usability.",
+      body: "The Porsche 718 Cayman is a mid-engine sports coupe that captures the essence of driving purity. Designed with balance and precision in mind, it offers a focused, engaging experience for enthusiasts who value sharp handling, refined engineering, and timeless design. As the hardtop sibling to the 718 Boxster, the Cayman provides increased structural rigidity and an even more connected feel on the road or track.",
       src: "/7183.webp",
       alt: "718 Cayman Drifting",
       imagePosition: "right",
@@ -42,7 +43,7 @@ export default function Page() {
     },
     {
       header: "Interior",
-      body: "Inside, the Cayman blends functionality with sophistication. The driver-centric layout places key controls within easy reach, while high-quality materials and available options—like sport seats, Alcantara trim, and a GT-style steering wheel—add to the sense of refinement. Technology is intuitive and streamlined, with Porsche Communication Management (PCM), smartphone integration, and premium audio available for a comfortable, connected experience.",
+      body: "Inside, the Cayman blends functionality with sophistication. The driver-centric layout places key controls within easy reach, while high-quality materials and available options. Technology is intuitive and streamlined, with Porsche Communication Management (PCM), smartphone integration, and premium audio available for a comfortable, connected experience.",
       src: "/718Interior.jpg",
       alt: "718 Cayman Interior",
       imagePosition: "left",
@@ -51,11 +52,13 @@ export default function Page() {
 
   return (
     <div className={"bg-secondary flex flex-col sectionGap"}>
-      <div className={"w-full h-[400px] overflow-hidden relative"}>
-        <img
+      <div className={"overflow-hidden relative"}>
+        <Image
+          width={3840}
+          height={1476}
           src={"/718Banner.jpg"}
           alt={"718 Cayman"}
-          className={"w-full h-full object-cover"}
+          className={"h-[300px] md:w-full object-cover"}
         />
         <div
           className={
