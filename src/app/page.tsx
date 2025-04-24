@@ -84,22 +84,22 @@ export default function Home() {
       </div>
       <div
         className={
-          " w-full h-[500px] mobilePadding flex flex-col justify-center items-center bg-secondary"
+          "h-full mobilePadding flex flex-col justify-center items-center bg-secondary"
         }
       >
-        <span className={"font-bold text-2xl text-primary pb-5"}>
+        <span className={"font-bold text-2xl text-primary pb-8 lg:pb-20"}>
           Featuring Car Brands
         </span>
         <div
           className={
-            "w-full flex flex-col md:flex-row gap-20 justify-center items-center"
+            "flex flex-col md:flex-row gap-20 md:gap-12 justify-center items-center"
           }
         >
           {logos.map(({ src, alt }: Logo) => (
-            <div className={"relative w-full h-[350px]"} key={src}>
+            <div className={"w-full "} key={src}>
               <Image
-                fill
-                sizes="33vw"
+                width={1920}
+                height={1080}
                 src={src}
                 alt={alt}
                 className={"object-cover md:object-contain"}
