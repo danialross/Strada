@@ -52,16 +52,14 @@ export default function Page() {
 
   return (
     <div className={"bg-secondary flex flex-col sectionGap"}>
-      <div className={"relative overflow-hidden flex items-center"}>
-        <Image
-          width={1176}
-          height={350}
-          src={"/s2kBanner.jpg"}
-          alt={"Honda S2000 Banner"}
-          className={"[object-cover object-left"}
-          priority
-        />
-      </div>
+      <Image
+        width={1176}
+        height={350}
+        src={"/s2kBanner.jpg"}
+        alt={"Honda S2000 Banner"}
+        className={"w-full object-cover object-left"}
+        priority
+      />
       {
         <div
           className={`w-full h-full md:h-[400px] flex flex-col md:flex-row justify-center items-center sectionGap`}
