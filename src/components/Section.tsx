@@ -33,7 +33,7 @@ export default function Section({
     };
 
     if (sectionRef.current) {
-      observer = new IntersectionObserver(handleInView);
+      observer = new IntersectionObserver(handleInView, { threshold: 0.2 });
       observer.observe(sectionRef.current);
     }
 
@@ -56,9 +56,9 @@ export default function Section({
          ${imagePosition === "left" ? "md:flex-row-reverse" : "md:flex-row"}
          ${
            imagePosition === "left" && !isInView
-             ? "translate-x-1/2"
+             ? "translate-x-full"
              : imagePosition === "right" && !isInView
-               ? "-translate-x-1/2"
+               ? "-translate-x-full"
                : "translate-x-0"
          }`}
       >
