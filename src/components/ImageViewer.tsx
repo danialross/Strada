@@ -59,6 +59,7 @@ export default function ImageViewer({
         className={`${isShowImage ? "opacity-100" : "opacity-0"} object-cover ${position} hover:scale-115 animateAll`}
         onClick={() => setIsShowOverlay(true)}
         ref={imageRef}
+        sizes={"(max-size: 768px) 100vw, 50vw"}
       />
       <div
         className={`w-screen h-screen z-100 fixed inset-0 animateFade ${isShowOverlay ? "opacity-100" : "opacity-0 pointer-events-none"}  backdrop-blur-xs flex justify-center items-center`}
@@ -75,6 +76,7 @@ export default function ImageViewer({
               src={src}
               alt={alt}
               className={`object-contain lg:object-cover ${position}`}
+              sizes={"100vw"}
             />
             <IoIosClose
               className={
