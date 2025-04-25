@@ -5,10 +5,16 @@ import { ImageViewerProps } from "@/types";
 import Image from "next/image";
 
 //parent needs to be relative
-export default function ImageViewer({ src, alt, position }: ImageViewerProps) {
+export default function ImageViewer({
+  src,
+  alt,
+  position,
+  animationDelay = 0,
+}: ImageViewerProps) {
+  const overlayImageRef = useRef<HTMLImageElement | null>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
-  const [imageWidth, setImageWidth] = useState(0);
   const [isShowOverlay, setIsShowOverlay] = useState(false);
+  const [isShowImage, setIsShowImage] = useState(false);
   useEffect(() => {
     if (isShowOverlay) {
       document.body.style.overflowY = "hidden";
@@ -18,18 +24,41 @@ export default function ImageViewer({ src, alt, position }: ImageViewerProps) {
   }, [isShowOverlay]);
 
   useEffect(() => {
-    if (imageRef) {
+    let observer: IntersectionObserver | null = null;
+    let timeoutId: NodeJS.Timeout | null = null;
+    const handleAppear: IntersectionObserverCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          timeoutId = setTimeout(() => setIsShowImage(true), animationDelay);
+        } else {
+          setIsShowImage(false);
+        }
+      });
+    };
+
+    if (imageRef.current) {
+      observer = new IntersectionObserver(handleAppear);
+      observer.observe(imageRef.current);
     }
-  }, [imageRef]);
+
+    return () => {
+      if (observer && imageRef.current) {
+        observer.unobserve(imageRef.current);
+      }
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
+  }, []);
   return (
     <>
       <Image
         src={src}
-        sizes={"(max-width: 768px) 100vw, 50vw"}
         alt={alt}
         fill
-        className={`object-cover ${position} hover:scale-115 animateMovement`}
+        className={`${isShowImage ? "opacity-100" : "opacity-0"} object-cover ${position} hover:scale-115 animateAll`}
         onClick={() => setIsShowOverlay(true)}
+        ref={imageRef}
       />
       <div
         className={`w-screen h-screen z-100 fixed inset-0 animateFade ${isShowOverlay ? "opacity-100" : "opacity-0 pointer-events-none"}  backdrop-blur-xs flex justify-center items-center`}
@@ -39,13 +68,13 @@ export default function ImageViewer({ src, alt, position }: ImageViewerProps) {
         >
           <div
             className={"w-4/5 h-4/5 relative flex justify-center"}
-            ref={imageRef}
+            ref={overlayImageRef}
           >
             <Image
               fill
               src={src}
               alt={alt}
-              className={`object-contain md:object-cover ${position}`}
+              className={`object-contain lg:object-cover ${position}`}
             />
             <IoIosClose
               className={

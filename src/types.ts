@@ -13,14 +13,9 @@ export type RedirectLinkData = {
   label: string;
 };
 
-export type ImageData = {
-  src: string;
-  alt: string;
-  position: "object-left" | "object-right" | "object-center";
-};
-
 export type ImageViewerProps = {
   src: string;
   alt: string;
   position?: "object-left" | "object-right";
+  animationDelay?: number; // in milliseconds
 };

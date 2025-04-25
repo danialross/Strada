@@ -66,6 +66,7 @@ export default function Page() {
             src={"/typerBanner.jpeg"}
             alt={"Civic Type R Banner"}
             className={"w-full h-full object-cover object-right"}
+            priority
           />
         </div>
         <span
@@ -79,12 +80,17 @@ export default function Page() {
       <div
         className={`w-full h-full md:h-[400px] flex flex-col md:flex-row justify-center items-center sectionGap`}
       >
-        {images.map(({ src, alt, position }: ImageViewerProps) => (
+        {images.map(({ src, alt, position }: ImageViewerProps, index) => (
           <div
             className={"w-full h-[300px] md:h-[400px] relative overflow-hidden"}
             key={src}
           >
-            <ImageViewer src={src} alt={alt} position={position} />
+            <ImageViewer
+              src={src}
+              alt={alt}
+              position={position}
+              animationDelay={index * 200}
+            />
           </div>
         ))}
       </div>

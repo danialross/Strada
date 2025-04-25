@@ -21,16 +21,12 @@ export default function Section({
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    console.log(imagePosition);
     let observer: IntersectionObserver | null = null;
-
     const handleInView: IntersectionObserverCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          console.log(`intersecting ${header}`);
           setIsInView(true);
         } else {
-          console.log(`not intersecting ${header}`);
           setIsInView(false);
         }
       });
@@ -55,7 +51,7 @@ export default function Section({
       ref={sectionRef}
     >
       <div
-        className={`absolute w-full h-full top-0 left-0 animateMovement
+        className={`absolute w-full h-full top-0 left-0 animateSlideIn
          bg-primary flex flex-col md:flex-row justify-center items-center 
          ${imagePosition === "left" ? "md:flex-row-reverse" : "md:flex-row"}
          ${
