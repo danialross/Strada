@@ -1,8 +1,12 @@
+"use client";
 import ImageViewer from "@/components/ImageViewer";
 import { ImageViewerProps } from "@/types";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 export default function Page() {
+  const textRef = useRef<HTMLDivElement | null>(null);
+  const [isShowingText, setIsShowingText] = useState(false);
   const images: ImageViewerProps[] = [
     {
       src: "/about5.webp",
@@ -17,6 +21,31 @@ export default function Page() {
       alt: "Mazda RX-7",
     },
   ];
+
+  useEffect(() => {
+    let observer: IntersectionObserver | null = null;
+    const handleShow: IntersectionObserverCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          console.log("Intersecting", entry);
+          setIsShowingText(true);
+        } else {
+          console.log("not Intersecting", entry);
+          setIsShowingText(false);
+        }
+      });
+    };
+    if (textRef.current) {
+      observer = new IntersectionObserver(handleShow, { threshold: 0.2 });
+      observer.observe(textRef.current);
+    }
+
+    return () => {
+      if (observer && textRef.current) {
+        observer.unobserve(textRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div
@@ -42,64 +71,69 @@ export default function Page() {
         muted
         autoPlay
         playsInline
-        className={"col-span-3 w-full h-[300px] md:max-h-[400px] object-cover"}
+        className={"col-span-3 w-full h-[400px] md:max-h-[400px] object-cover"}
       >
         <source src={"/about.mp4"} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <div className={"relative h-[400px] md:h-auto md:w-full overflow-hidden"}>
-        <ImageViewer src={"/about2.webp"} alt={"BMW M3"} />
+        <ImageViewer src={"/about2.webp"} alt={"BMW M3"} animationDelay={200} />
       </div>
-      <div
-        className={
-          "col-span-2 relative flex items-center justify-center overflow-hidden"
-        }
-      >
-        <Image
-          src={"/about6.jpg"}
-          alt={"Race Track Image"}
-          fill
-          className={"object-cover blur-xs scale-110"}
-        />
-
-        <div className={"z-5 w-full h-full mobilePadding"}>
-          <p className={"headerText"}>Strada</p>
-          <br />
-          <div className={"bodyText"}>
-            <p>
-              A web project dedicated to showcasing the artistry, engineering,
-              and innovation behind the world’s most exciting cars. Designed as
-              a digital gallery, this site features stunning visuals, dynamic
-              animations, and interactive elements to bring each vehicle to
-              life.
-            </p>
+      <div className={`col-span-2`} ref={textRef}>
+        <div
+          className={` relative flex items-center justify-center overflow-hidden animateMovement ${isShowingText ? "translate-x-0" : "translate-x-full"}`}
+        >
+          <Image
+            src={"/about6.jpg"}
+            alt={"Race Track Image"}
+            fill
+            className={"object-cover blur-xs scale-110"}
+          />
+          <div className={` top-0 left-0 z-5 w-full h-full mobilePadding`}>
+            <p className={"headerText"}>Strada</p>
             <br />
-            <p>
-              From sleek supercars to cutting-edge performance machines, every
-              car highlighted here is more than just a mode of
-              transportation—it’s a masterpiece of design and technology.
-              Through carefully crafted animations and immersive layouts, this
-              project aims to capture the essence of speed, power, and
-              precision.
-            </p>
-            <br />
-            <p>
-              Whether you’re a car enthusiast, a designer, or someone who simply
-              appreciates the beauty of automotive engineering, this website is
-              a celebration of performance and design in motion.
-            </p>
+            <div className={"bodyText"}>
+              <p>
+                A web project dedicated to showcasing the artistry, engineering,
+                and innovation behind the world’s most exciting cars. Designed
+                as a digital gallery, this site features stunning visuals,
+                dynamic animations, and interactive elements to bring each
+                vehicle to life.
+              </p>
+              <br />
+              <p>
+                From sleek supercars to cutting-edge performance machines, every
+                car highlighted here is more than just a mode of
+                transportation—it’s a masterpiece of design and technology.
+                Through carefully crafted animations and immersive layouts, this
+                project aims to capture the essence of speed, power, and
+                precision.
+              </p>
+              <br />
+              <p>
+                Whether you’re a car enthusiast, a designer, or someone who
+                simply appreciates the beauty of automotive engineering, this
+                website is a celebration of performance and design in motion.
+              </p>
+            </div>
           </div>
         </div>
       </div>
+
       <div
         className={`w-full h-full flex flex-col md:flex-row col-span-3 sectionGap`}
       >
-        {images.map(({ src, alt }: ImageViewerProps) => (
+        {images.map(({ src, alt }: ImageViewerProps, index) => (
           <div
-            className={"relative w-full h-[400px] border overflow-hidden"}
+            className={"relative w-full h-[400px] overflow-hidden"}
             key={src}
           >
-            <ImageViewer src={src} alt={alt} key={src} />
+            <ImageViewer
+              src={src}
+              alt={alt}
+              key={src}
+              animationDelay={(2 + index) * 200}
+            />
           </div>
         ))}
       </div>

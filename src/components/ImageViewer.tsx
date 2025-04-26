@@ -5,6 +5,7 @@ import { ImageViewerProps } from "@/types";
 import Image from "next/image";
 
 //parent needs to be relative
+//the IntersectionObserver is delayed to account for transitionAnimation overlay
 export default function ImageViewer({
   src,
   alt,
@@ -42,10 +43,10 @@ export default function ImageViewer({
 
     mountingTimeout = setTimeout(() => {
       if (imageRef.current) {
-        observer = new IntersectionObserver(handleAppear);
+        observer = new IntersectionObserver(handleAppear, { threshold: 0.2 });
         observer.observe(imageRef.current);
       }
-    }, 2000);
+    }, 1000);
 
     return () => {
       if (observer && imageRef.current) {
