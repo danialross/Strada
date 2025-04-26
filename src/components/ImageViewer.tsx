@@ -25,28 +25,37 @@ export default function ImageViewer({
 
   useEffect(() => {
     let observer: IntersectionObserver | null = null;
-    let timeoutId: NodeJS.Timeout | null = null;
+    let animationTimeout: NodeJS.Timeout | null = null;
+    let mountingTimeout: NodeJS.Timeout | null = null;
     const handleAppear: IntersectionObserverCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          timeoutId = setTimeout(() => setIsShowImage(true), animationDelay);
+          animationTimeout = setTimeout(
+            () => setIsShowImage(true),
+            animationDelay,
+          );
         } else {
           setIsShowImage(false);
         }
       });
     };
 
-    if (imageRef.current) {
-      observer = new IntersectionObserver(handleAppear);
-      observer.observe(imageRef.current);
-    }
+    mountingTimeout = setTimeout(() => {
+      if (imageRef.current) {
+        observer = new IntersectionObserver(handleAppear);
+        observer.observe(imageRef.current);
+      }
+    }, 2000);
 
     return () => {
       if (observer && imageRef.current) {
         observer.unobserve(imageRef.current);
       }
-      if (timeoutId) {
-        clearTimeout(timeoutId);
+      if (animationTimeout) {
+        clearTimeout(animationTimeout);
+      }
+      if (mountingTimeout) {
+        clearTimeout(mountingTimeout);
       }
     };
   }, []);
@@ -67,16 +76,14 @@ export default function ImageViewer({
         <div
           className={"w-full h-full flex flex-col items-center justify-center"}
         >
-          <div
-            className={"w-4/5 h-4/5 relative flex justify-center"}
-            ref={overlayImageRef}
-          >
+          <div className={"w-4/5 h-4/5 relative flex justify-center"}>
             <Image
               fill
               src={src}
               alt={alt}
               className={`object-contain lg:object-cover ${position}`}
               sizes={"100vw"}
+              ref={overlayImageRef}
             />
             <IoIosClose
               className={
