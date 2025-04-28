@@ -26,8 +26,6 @@ export default function Section({
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           setIsInView(true);
-        } else {
-          setIsInView(false);
         }
       });
     };

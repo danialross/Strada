@@ -87,12 +87,12 @@ export default function Home() {
           "h-full mobilePadding flex flex-col justify-center items-center bg-secondary"
         }
       >
-        <span className={"font-bold text-2xl text-primary pb-8 lg:pb-20"}>
+        <span className={"font-bold text-2xl text-primary pb-8 lg:pb-10"}>
           Featuring Car Brands
         </span>
         <div
           className={
-            "flex flex-col md:flex-row gap-20 md:gap-12 justify-center items-center"
+            "flex flex-col md:flex-row pb-8 gap-20 justify-center items-center"
           }
         >
           {logos.map(({ src, alt }: Logo) => (
