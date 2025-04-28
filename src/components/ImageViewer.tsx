@@ -44,7 +44,7 @@ export default function ImageViewer({
         observer = new IntersectionObserver(handleAppear, { threshold: 0.2 });
         observer.observe(imageRef.current);
       }
-    }, 1000);
+    }, 1500);
 
     return () => {
       if (observer && imageRef.current) {
