@@ -4,34 +4,31 @@ import { ImageViewerProps } from "@/types";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
+const images: ImageViewerProps[] = [
+  {
+    src: "/about5.webp",
+    alt: "Subaru Impreza WRX",
+  },
+  {
+    src: "/about3.jpg",
+    alt: "Ferrari F40",
+  },
+  {
+    src: "/about4.webp",
+    alt: "Mazda RX-7",
+  },
+];
+
 export default function Page() {
   const textRef = useRef<HTMLDivElement | null>(null);
   const [isShowingText, setIsShowingText] = useState(false);
-  const images: ImageViewerProps[] = [
-    {
-      src: "/about5.webp",
-      alt: "Subaru Impreza WRX",
-    },
-    {
-      src: "/about3.jpg",
-      alt: "Ferrari F40",
-    },
-    {
-      src: "/about4.webp",
-      alt: "Mazda RX-7",
-    },
-  ];
 
   useEffect(() => {
     let observer: IntersectionObserver | null = null;
     const handleShow: IntersectionObserverCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          console.log("Intersecting", entry);
           setIsShowingText(true);
-        } else {
-          console.log("not Intersecting", entry);
-          setIsShowingText(false);
         }
       });
     };
