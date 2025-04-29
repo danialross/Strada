@@ -68,6 +68,7 @@ export default function Page() {
         muted
         autoPlay
         playsInline
+        preload="auto"
         className={"col-span-3 w-full h-[400px] md:max-h-[400px] object-cover"}
       >
         <source src={"/about.mp4"} type="video/mp4" />
