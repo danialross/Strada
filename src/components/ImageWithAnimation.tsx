@@ -25,16 +25,16 @@ export default function ImageWithAnimation({
     const handleAppear: IntersectionObserverCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          setIsShowingImage(true);
+          timeout = setTimeout(() => {
+            setIsShowingImage(true);
+          }, animationDelay);
         }
       });
     };
 
     if (imageRef.current) {
-      timeout = setTimeout(() => {
-        observer = new IntersectionObserver(handleAppear, { threshold: 0.2 });
-        observer.observe(imageRef.current as HTMLImageElement);
-      }, animationDelay);
+      observer = new IntersectionObserver(handleAppear, { threshold: 0.2 });
+      observer.observe(imageRef.current as HTMLImageElement);
     }
 
     return () => {
