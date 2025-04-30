@@ -71,7 +71,7 @@ export default function Page() {
         </div>
         <span
           className={
-            "absolute w-[250px] lg:w-auto top-1/10  md:top-1/2 md:-translate-y-1/2 left-1/2 -translate-x-1/2 md: md:left-1/10 md:translate-x-0 bannerText text-center "
+            "absolute w-[250px] lg:w-auto top-1/10  md:top-1/2 md:-translate-y-1/2 left-1/2 -translate-x-1/2 md: md:left-1/10 md:translate-x-0 bannerText text-center"
           }
         >
           Honda Civic Type R FL5

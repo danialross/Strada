@@ -35,6 +35,7 @@ export default function Home() {
           loop
           muted
           playsInline
+          preload="auto"
           className={"w-full h-[500px] object-cover"}
         >
           <source src={"/Homepage.mp4"} />

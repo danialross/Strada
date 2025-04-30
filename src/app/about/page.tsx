@@ -25,6 +25,7 @@ export default function Page() {
 
   useEffect(() => {
     let observer: IntersectionObserver | null = null;
+    let timeout: NodeJS.Timeout | null = null;
     const handleShow: IntersectionObserverCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -41,6 +42,9 @@ export default function Page() {
       if (observer && textRef.current) {
         observer.unobserve(textRef.current);
       }
+      if (timeout) {
+        clearTimeout(timeout);
+      }
     };
   }, []);
 
@@ -52,30 +56,24 @@ export default function Page() {
     >
       <div
         className={
-          "flex justify-center items-center col-span-3 relative h-[400px] overflow-hidden border border-black"
+          "flex justify-center items-center col-span-3 relative h-[500px] overflow-hidden"
         }
       >
-        <span className={"z-5 bannerText"}>About</span>
-        <Image
-          src={"/about1.jpg"}
-          alt={"About Banner"}
-          fill
-          className={"object-cover object-top"}
-        />
+        <span className={"z-5 bannerText absolute "}>About</span>
+        <video
+          loop
+          muted
+          autoPlay
+          playsInline
+          preload="auto"
+          className={"col-span-3 w-full h-full object-cover"}
+        >
+          <source src={"/about.mp4"} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </div>
-      <video
-        loop
-        muted
-        autoPlay
-        playsInline
-        preload="auto"
-        className={"col-span-3 w-full h-[400px] md:max-h-[400px] object-cover"}
-      >
-        <source src={"/about.mp4"} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
       <div className={"relative h-[400px] md:h-auto md:w-full overflow-hidden"}>
-        <ImageViewer src={"/about2.webp"} alt={"BMW M3"} animationDelay={200} />
+        <ImageViewer src={"/about2.webp"} alt={"BMW M3"} />
       </div>
       <div className={`col-span-2`} ref={textRef}>
         <div
@@ -130,7 +128,7 @@ export default function Page() {
               src={src}
               alt={alt}
               key={src}
-              animationDelay={(2 + index) * 200}
+              animationDelay={index * 200}
             />
           </div>
         ))}
