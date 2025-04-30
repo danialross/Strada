@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ImageWithAnimation from "@/components/ImageWithAnimation";
 
 type Logo = { src: string; alt: string };
 
@@ -84,27 +84,25 @@ export default function Home() {
       </div>
       <div
         className={
-          "h-full mobilePadding flex flex-col justify-center items-center bg-secondary"
+          "w-full h-full  min-h-[500px] mobilePadding flex flex-col justify-evenly items-center bg-secondary"
         }
       >
-        <span className={"font-bold text-2xl text-primary pb-8 lg:pb-10"}>
+        <span className={"font-bold text-2xl text-primary pb-8"}>
           Featuring Car Brands
         </span>
         <div
           className={
-            "flex flex-col md:flex-row pb-8 gap-20 justify-center items-center"
+            "flex flex-col lg:flex-row w-full gap-20 pb-4 md:pb-12 justify-evenly items-center"
           }
         >
-          {logos.map(({ src, alt }: Logo) => (
-            <div className={"w-full "} key={src}>
-              <Image
-                width={1920}
-                height={1080}
-                src={src}
-                alt={alt}
-                className={"object-cover md:object-contain"}
-              />
-            </div>
+          {logos.map(({ src, alt }: Logo, index) => (
+            <ImageWithAnimation
+              key={src}
+              src={src}
+              alt={alt}
+              animationDelay={index * 250}
+              className={"max-w-[400px]"}
+            />
           ))}
         </div>
       </div>

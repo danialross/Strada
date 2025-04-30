@@ -5,7 +5,7 @@ export default function TransitionAnimation() {
   const path = usePathname();
   return (
     <div
-      className={`z-30 fixed inset-0 flex items-center justify-center bg-primary text-8xl animateFadeOut`}
+      className={`z-30 fixed inset-0 flex items-center justify-center bg-primary text-8xl animateIntroFadeOut`}
       key={path}
     >
       <div className={"relative h-1/4 md:h-1/2"}>
@@ -68,7 +68,7 @@ export default function TransitionAnimation() {
         </svg>
         <div
           className={
-            "absolute w-full h-[400px] left-0 top-0 animateBar bg-primary"
+            "absolute w-full h-[400px] left-0 top-0 animateIntroBar bg-primary"
           }
         />
       </div>
