@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import TransitionAnimation from "@/components/TransitionAnimation";
 
 export const metadata: Metadata = {
-  title: "Strada",
+  title: "Strada | Engineered Excellence",
   description: "A Showcase Of Driving Legacy",
 };
 

@@ -20,16 +20,27 @@ const logos: Logo[] = [
 export default function Home() {
   return (
     <div className={" bg-primary flex flex-col justify-center items-center"}>
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className={"w-full h-[500px] object-cover"}
-      >
-        <source src={"/Homepage.mp4"} />
-        Your browser does not support the video tag.
-      </video>
+      <div className={"w-full relative flex justify-center"}>
+        <div
+          className={
+            "absolute w-full max-w-[1100px] mobilePadding top-3/4 -translate-y-1/2 text-right"
+          }
+        >
+          <p className={"headerText"}>Enter the World of</p>
+          <p className={"bannerText"}>Automotive Elegance</p>
+        </div>
+
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className={"w-full h-[500px] object-cover"}
+        >
+          <source src={"/Homepage.mp4"} />
+          Your browser does not support the video tag.
+        </video>
+      </div>
       <div
         className={
           "w-full h-full min-h-[500px] relative flex justify-center bg-white"
