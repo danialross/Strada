@@ -96,11 +96,15 @@ export default function Home() {
       </div>
       <div
         className={
-          "w-full h-full  min-h-[500px] mobilePadding flex flex-col justify-evenly items-center bg-secondary"
+          "w-full h-full min-h-[500px] mobilePadding flex flex-col justify-evenly items-center bg-secondary"
         }
       >
-        <span className={"font-bold text-3xl lg:text-4xl text-primary pb-8"}>
-          Featuring Car Brands
+        <span
+          className={
+            "font-bold text-4xl md:text-2xl lg:text-4xl text-primary pb-8 text-center"
+          }
+        >
+          Featuring Brands
         </span>
         <div
           className={
@@ -108,13 +112,17 @@ export default function Home() {
           }
         >
           {logos.map(({ src, alt }: Logo, index) => (
-            <ImageWithAnimation
+            <div
+              className={"relative w-full max-w-[400px] md:w-1/3 aspect-[16/9]"}
               key={src}
-              src={src}
-              alt={alt}
-              animationDelay={index * 250}
-              className={"max-w-[400px]"}
-            />
+            >
+              <ImageWithAnimation
+                key={src}
+                src={src}
+                alt={alt}
+                animationDelay={index * 250}
+              />
+            </div>
           ))}
         </div>
       </div>

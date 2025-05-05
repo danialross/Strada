@@ -33,7 +33,7 @@ export default function ImageWithAnimation({
     };
 
     if (imageRef.current) {
-      observer = new IntersectionObserver(handleAppear, { threshold: 0.2 });
+      observer = new IntersectionObserver(handleAppear, { threshold: 0.7 });
       observer.observe(imageRef.current as HTMLImageElement);
     }
 
@@ -46,18 +46,13 @@ export default function ImageWithAnimation({
   }, []);
 
   return (
-    <div
-      className={`w-full animateFade ${isShowingImage ? "opacity-100" : "opacity-0"} ${className}`}
-      key={src}
-    >
-      <Image
-        width={1920}
-        height={1080}
-        src={src}
-        alt={alt}
-        className={" object-cover md:object-contain"}
-        ref={imageRef}
-      />
-    </div>
+    <Image
+      fill
+      sizes="100vw"
+      src={src}
+      alt={alt}
+      className={`object-cover md:object-contain animateFade ${isShowingImage ? "opacity-100" : "opacity-0"} ${className} `}
+      ref={imageRef}
+    />
   );
 }
