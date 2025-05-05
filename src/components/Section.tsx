@@ -31,7 +31,7 @@ export default function Section({
     };
 
     if (sectionRef.current) {
-      observer = new IntersectionObserver(handleInView, { threshold: 0.2 });
+      observer = new IntersectionObserver(handleInView, { threshold: 0.6 });
       observer.observe(sectionRef.current);
     }
 
