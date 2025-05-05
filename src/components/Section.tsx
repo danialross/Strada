@@ -76,7 +76,7 @@ export default function Section({
           <Image
             src={src}
             alt={alt}
-            sizes={"(max-width: 768px) 100vw, 50vw"}
+            sizes={"100vw"}
             fill
             className={"object-cover"}
           />

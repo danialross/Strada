@@ -59,10 +59,10 @@ export default function Page() {
       }
     >
       <div className={"w-full h-[400px] relative"}>
-        <div className={"absolute top-0 left-0 w-full h-full"}>
+        <div className={"absolute top-0 left-0 w-full h-[400px]"}>
           <Image
-            width={1900}
-            height={791}
+            fill
+            sizes={"100vw"}
             src={"/typerBanner.jpeg"}
             alt={"Civic Type R Banner"}
             className={"w-full h-full object-cover object-right"}

@@ -52,14 +52,16 @@ const sections: SectionData[] = [
 export default function Page() {
   return (
     <div className={"bg-secondary flex flex-col sectionGap"}>
-      <Image
-        width={1176}
-        height={350}
-        src={"/s2kBanner.jpg"}
-        alt={"Honda S2000 Banner"}
-        className={"w-full object-cover object-left"}
-        priority
-      />
+      <div className={"relative h-[200px] lg:h-[400px] w-full"}>
+        <Image
+          fill
+          sizes={"100vw"}
+          src={"/s2kBanner.jpg"}
+          alt={"Honda S2000 Banner"}
+          className={"w-full object-cover object-left"}
+          priority
+        />
+      </div>
       {
         <div
           className={`w-full h-full md:h-[400px] flex flex-col md:flex-row justify-center items-center sectionGap`}

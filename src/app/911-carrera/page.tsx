@@ -54,8 +54,8 @@ export default function Page() {
     <div className={"bg-secondary flex flex-col sectionGap"}>
       <div className={"w-full h-[400px] overflow-hidden relative"}>
         <Image
-          width={5500}
-          height={3094}
+          fill
+          sizes={"100vw"}
           src={"/911Banner.jpg"}
           alt={"911 Carrera"}
           className={"w-full h-full object-cover"}

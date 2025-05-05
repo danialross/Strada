@@ -61,7 +61,7 @@ export default function ImageViewer({
         className={`${isShowImage ? "opacity-100" : "opacity-0"} object-cover ${position} hover:scale-115 animateAll`}
         onClick={() => setIsShowOverlay(true)}
         ref={imageRef}
-        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 100vw"
+        sizes={"100%"}
       />
       <div
         className={`w-screen h-screen z-100 fixed inset-0 animateFade ${isShowOverlay ? "opacity-100" : "opacity-0 pointer-events-none"}  backdrop-blur-xs flex justify-center items-center`}

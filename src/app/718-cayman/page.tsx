@@ -52,10 +52,10 @@ const sections: SectionData[] = [
 export default function Page() {
   return (
     <div className={"bg-secondary flex flex-col sectionGap"}>
-      <div className={"overflow-hidden relative"}>
+      <div className={"relative w-full h-[400px] overflow-hidden"}>
         <Image
-          width={3840}
-          height={1476}
+          fill
+          sizes={"100vw"}
           src={"/718Banner.jpg"}
           alt={"718 Cayman"}
           className={"h-[300px] md:w-full object-cover"}

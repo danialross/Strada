@@ -53,14 +53,25 @@ const sections: SectionData[] = [
 export default function Page() {
   return (
     <div className={"bg-secondary flex flex-col sectionGap"}>
-      <Image
-        width={1920}
-        height={600}
-        src={"/corollaBanner.webp"}
-        alt={"GR Corolla Banner"}
-        className={"object-cover"}
-        priority
-      />
+      <div className={"relative h-[400px] w-full"}>
+        <Image
+          fill
+          sizes={"100vw"}
+          src={"/corollaBanner.webp"}
+          alt={"GR Corolla Banner"}
+          className={"object-cover object-right"}
+          priority
+        />
+        <div
+          className={
+            "xl:hidden absolute top-1/2 left-1/2 -translate-1/2 bannerText text-center text-nowrap"
+          }
+        >
+          Toyota
+          <br className={"md:hidden"} />
+          <span> GR Corolla</span>
+        </div>
+      </div>
       {
         <div
           className={`w-full h-full md:h-[400px] flex flex-col md:flex-row justify-center items-center sectionGap`}
