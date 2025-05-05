@@ -3,6 +3,7 @@ import ImageViewer from "@/components/ImageViewer";
 import { ImageViewerProps } from "@/types";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 
 const images: ImageViewerProps[] = [
   {
@@ -68,12 +69,14 @@ export default function Page() {
           Your browser does not support the video tag.
         </video>
       </div>
-      <div className={"relative h-[400px] md:h-auto md:w-full overflow-hidden"}>
+      <div
+        className={"relative col-span-1 md:h-auto md:w-full overflow-hidden"}
+      >
         <ImageViewer src={"/about2.webp"} alt={"BMW M3"} />
       </div>
-      <div className={`col-span-2`} ref={textRef}>
+      <div className={`col-span-2 h-[500px]`} ref={textRef}>
         <div
-          className={` relative flex items-center justify-center overflow-hidden animateMovement ${isShowingText ? "translate-x-0" : "translate-x-full"}`}
+          className={` relative h-full flex items-center justify-center overflow-hidden animateMovement ${isShowingText ? "translate-x-0" : "translate-x-full"}`}
         >
           <Image
             src={"/about6.jpg"}
@@ -107,6 +110,23 @@ export default function Page() {
                 simply appreciates the beauty of automotive engineering, this
                 website is a celebration of performance and design in motion.
               </p>
+              <div className={"pt-5 flex justify-start items-center gap-4"}>
+                <p>
+                  For copyright inquiries, please contact me through this site:
+                </p>
+                <Link
+                  href={"https://danialross.vercel.app/"}
+                  className={"hover:scale-110 animateMovement"}
+                >
+                  <Image
+                    src={"/contact.png"}
+                    alt="Portfolio Logo"
+                    width={100}
+                    height={100}
+                    className={"rounded-full"}
+                  />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
