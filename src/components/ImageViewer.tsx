@@ -76,6 +76,7 @@ export default function ImageViewer({
             className={`object-contain md:object-cover ${position} `}
             sizes={"100vw"}
             ref={overlayImageRef}
+            quality={100}
           />
           <IoIosClose
             className={
