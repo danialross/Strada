@@ -99,7 +99,7 @@ export default function Home() {
           "w-full h-full  min-h-[500px] mobilePadding flex flex-col justify-evenly items-center bg-secondary"
         }
       >
-        <span className={"font-bold text-2xl text-primary pb-8"}>
+        <span className={"font-bold text-3xl lg:text-4xl text-primary pb-8"}>
           Featuring Car Brands
         </span>
         <div
