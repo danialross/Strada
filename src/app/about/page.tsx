@@ -70,11 +70,13 @@ export default function Page() {
         </video>
       </div>
       <div
-        className={"relative col-span-1 md:h-auto md:w-full overflow-hidden"}
+        className={
+          "relative h-[500px] col-span-1 md:h-auto md:w-full overflow-hidden"
+        }
       >
         <ImageViewer src={"/about2.webp"} alt={"BMW M3"} />
       </div>
-      <div className={`col-span-2 h-[500px]`} ref={textRef}>
+      <div className={`col-span-2 mdh-[500px]`} ref={textRef}>
         <div
           className={` relative h-full flex items-center justify-center overflow-hidden animateMovement ${isShowingText ? "translate-x-0" : "translate-x-full"}`}
         >
@@ -110,36 +112,35 @@ export default function Page() {
                 simply appreciates the beauty of automotive engineering, this
                 website is a celebration of performance and design in motion.
               </p>
-              <div className={"pt-5 flex justify-start items-center gap-4"}>
-                <p>
-                  For copyright inquiries, please contact me through this site:
-                </p>
-                <Link
-                  href={"https://danialross.vercel.app/"}
-                  className={"hover:scale-110 animateMovement"}
-                >
-                  <Image
-                    src={"/contact.png"}
-                    alt="Portfolio Logo"
-                    width={100}
-                    height={100}
-                    className={"rounded-full"}
-                  />
-                </Link>
-              </div>
+              <br />
+              <p>
+                For any inquiries or contact information, please reach out here
+              </p>
+              <Link
+                href={"https://danialross.vercel.app/"}
+                className={
+                  "animateMovement hover:scale-120 w-fit pl-5 pt-5 flex justify-start items-center gap-6"
+                }
+              >
+                <Image
+                  src={"/contact.png"}
+                  alt="Portfolio Logo"
+                  width={70}
+                  height={70}
+                  className={"rounded-full"}
+                />
+                Danial Ross
+              </Link>
             </div>
           </div>
         </div>
       </div>
 
       <div
-        className={`w-full h-full flex flex-col md:flex-row col-span-3 sectionGap`}
+        className={`w-full h-[500px] flex flex-col md:flex-row col-span-3 sectionGap`}
       >
         {images.map(({ src, alt }: ImageViewerProps, index) => (
-          <div
-            className={"relative w-full h-[400px] overflow-hidden"}
-            key={src}
-          >
+          <div className={"relative w-full h-full overflow-hidden"} key={src}>
             <ImageViewer
               src={src}
               alt={alt}
