@@ -25,7 +25,6 @@ export default function Page() {
 
   useEffect(() => {
     let observer: IntersectionObserver | null = null;
-    let timeout: NodeJS.Timeout | null = null;
     const handleShow: IntersectionObserverCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -41,9 +40,6 @@ export default function Page() {
     return () => {
       if (observer && textRef.current) {
         observer.unobserve(textRef.current);
-      }
-      if (timeout) {
-        clearTimeout(timeout);
       }
     };
   }, []);

@@ -27,7 +27,6 @@ export default function ImageViewer({
   useEffect(() => {
     let observer: IntersectionObserver | null = null;
     let animationTimeout: NodeJS.Timeout | null = null;
-    let mountingTimeout: NodeJS.Timeout | null = null;
     const handleAppear: IntersectionObserverCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -39,12 +38,10 @@ export default function ImageViewer({
       });
     };
 
-    mountingTimeout = setTimeout(() => {
-      if (imageRef.current) {
-        observer = new IntersectionObserver(handleAppear, { threshold: 0.2 });
-        observer.observe(imageRef.current);
-      }
-    }, 1500);
+    if (imageRef.current) {
+      observer = new IntersectionObserver(handleAppear, { threshold: 0.2 });
+      observer.observe(imageRef.current);
+    }
 
     return () => {
       if (observer && imageRef.current) {
@@ -52,9 +49,6 @@ export default function ImageViewer({
       }
       if (animationTimeout) {
         clearTimeout(animationTimeout);
-      }
-      if (mountingTimeout) {
-        clearTimeout(mountingTimeout);
       }
     };
   }, []);
