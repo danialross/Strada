@@ -19,7 +19,7 @@ export default function ImageWithAnimation({
   const [isShowingImage, setIsShowingImage] = useState(false);
 
   useEffect(() => {
-    let ref = imageRef.current;
+    const ref = imageRef.current;
     if (!ref) return;
 
     let timeout: NodeJS.Timeout;
@@ -33,7 +33,7 @@ export default function ImageWithAnimation({
       });
     };
 
-    let observer = new IntersectionObserver(handleAppear, { threshold: 0.7 });
+    const observer = new IntersectionObserver(handleAppear, { threshold: 0.7 });
     observer.observe(ref);
 
     return () => {
@@ -42,7 +42,7 @@ export default function ImageWithAnimation({
         clearTimeout(timeout);
       }
     };
-  }, []);
+  }, [animationDelay]);
 
   return (
     <Image

@@ -27,10 +27,8 @@ export default function Home() {
   const [isShowingWelcomeText, setIsShowingWelcomeText] = useState(false);
 
   useEffect(() => {
-    let introRef = introTextRef;
-    let welcomeRef = welcomeTextRef;
-    let introObserver: IntersectionObserver | null = null;
-    let welcomeObserver: IntersectionObserver | null = null;
+    const introRef = introTextRef.current;
+    if (!introRef) return;
 
     const handleIntroTextAnimation: IntersectionObserverCallback = (
       entries,
@@ -42,6 +40,20 @@ export default function Home() {
       });
     };
 
+    const introObserver = new IntersectionObserver(handleIntroTextAnimation, {
+      threshold: 0.2,
+    });
+    introObserver.observe(introRef);
+
+    return () => {
+      introObserver.unobserve(introRef);
+    };
+  }, []);
+
+  useEffect(() => {
+    const welcomeRef = welcomeTextRef.current;
+    if (!welcomeRef) return;
+
     const handleWelcomeTextAnimation: IntersectionObserverCallback = (
       entries,
     ) => {
@@ -52,29 +64,16 @@ export default function Home() {
       });
     };
 
-    if (introRef.current) {
-      introObserver = new IntersectionObserver(handleIntroTextAnimation, {
-        threshold: 0.2,
-      });
-      introObserver.observe(introRef.current);
-    }
-
-    if (welcomeRef.current) {
-      welcomeObserver = new IntersectionObserver(handleWelcomeTextAnimation);
-      welcomeObserver.observe(welcomeRef.current);
-    }
+    const welcomeObserver = new IntersectionObserver(
+      handleWelcomeTextAnimation,
+    );
+    welcomeObserver.observe(welcomeRef);
 
     return () => {
-      if (introRef.current && introObserver) {
-        introObserver.unobserve(introRef.current);
-      }
-      if (welcomeRef.current && welcomeObserver) {
-        welcomeObserver.unobserve(welcomeRef.current);
-      }
+      welcomeObserver.unobserve(welcomeRef);
     };
   }, []);
-  console.log(isShowingWelcomeText);
-  console.log(isShowingIntroText);
+
   return (
     <div className={" bg-primary flex flex-col justify-center items-center"}>
       <div

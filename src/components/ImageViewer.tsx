@@ -24,7 +24,7 @@ export default function ImageViewer({
   }, [isShowOverlay]);
 
   useEffect(() => {
-    let ref = imageRef.current;
+    const ref = imageRef.current;
     if (!ref) return;
 
     let animationTimeout: NodeJS.Timeout | null = null;
@@ -39,7 +39,7 @@ export default function ImageViewer({
       });
     };
 
-    let observer = new IntersectionObserver(handleAppear, { threshold: 0.2 });
+    const observer = new IntersectionObserver(handleAppear, { threshold: 0.2 });
     observer.observe(ref);
 
     return () => {

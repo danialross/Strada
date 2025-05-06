@@ -21,7 +21,7 @@ export default function Section({
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    let ref = sectionRef.current;
+    const ref = sectionRef.current;
     if (!ref) return;
 
     const handleInView: IntersectionObserverCallback = (entries) => {
@@ -32,7 +32,7 @@ export default function Section({
       });
     };
 
-    let observer = new IntersectionObserver(handleInView, { threshold: 0.6 });
+    const observer = new IntersectionObserver(handleInView, { threshold: 0.6 });
     observer.observe(ref);
 
     return () => {
