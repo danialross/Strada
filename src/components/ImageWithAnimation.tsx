@@ -19,9 +19,10 @@ export default function ImageWithAnimation({
   const [isShowingImage, setIsShowingImage] = useState(false);
 
   useEffect(() => {
-    let observer: IntersectionObserver;
-    let timeout: NodeJS.Timeout;
+    let ref = imageRef.current;
+    if (!ref) return;
 
+    let timeout: NodeJS.Timeout;
     const handleAppear: IntersectionObserverCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -32,14 +33,12 @@ export default function ImageWithAnimation({
       });
     };
 
-    if (imageRef.current) {
-      observer = new IntersectionObserver(handleAppear, { threshold: 0.7 });
-      observer.observe(imageRef.current as HTMLImageElement);
-    }
+    let observer = new IntersectionObserver(handleAppear, { threshold: 0.7 });
+    observer.observe(ref);
 
     return () => {
-      if (imageRef.current && observer) {
-        observer.unobserve(imageRef.current);
+      observer.unobserve(ref);
+      if (timeout) {
         clearTimeout(timeout);
       }
     };

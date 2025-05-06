@@ -12,7 +12,6 @@ export default function ImageViewer({
   position,
   animationDelay = 0,
 }: ImageViewerProps) {
-  const overlayImageRef = useRef<HTMLImageElement | null>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
   const [isShowOverlay, setIsShowOverlay] = useState(false);
   const [isShowImage, setIsShowImage] = useState(false);
@@ -25,7 +24,9 @@ export default function ImageViewer({
   }, [isShowOverlay]);
 
   useEffect(() => {
-    let observer: IntersectionObserver | null = null;
+    let ref = imageRef.current;
+    if (!ref) return;
+
     let animationTimeout: NodeJS.Timeout | null = null;
     const handleAppear: IntersectionObserverCallback = (entries) => {
       entries.forEach((entry) => {
@@ -38,20 +39,16 @@ export default function ImageViewer({
       });
     };
 
-    if (imageRef.current) {
-      observer = new IntersectionObserver(handleAppear, { threshold: 0.2 });
-      observer.observe(imageRef.current);
-    }
+    let observer = new IntersectionObserver(handleAppear, { threshold: 0.2 });
+    observer.observe(ref);
 
     return () => {
-      if (observer && imageRef.current) {
-        observer.unobserve(imageRef.current);
-      }
+      observer.unobserve(ref);
       if (animationTimeout) {
         clearTimeout(animationTimeout);
       }
     };
-  }, []);
+  }, [animationDelay]);
   return (
     <>
       <Image
@@ -75,7 +72,6 @@ export default function ImageViewer({
             alt={alt}
             className={`object-contain md:object-cover ${position} `}
             sizes={"100vw"}
-            ref={overlayImageRef}
             quality={100}
           />
           <IoIosClose

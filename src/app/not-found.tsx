@@ -8,7 +8,7 @@ export default function notFound() {
       }
     >
       <span className={"bannerText text-center"}>
-        The page you're looking for doesn’t exist.
+        The page you/&apos;re looking for doesn&apos;t exist.
       </span>
       <Link
         className={

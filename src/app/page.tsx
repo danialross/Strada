@@ -1,6 +1,7 @@
 "use client";
 import ImageWithAnimation from "@/components/ImageWithAnimation";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 type Logo = { src: string; alt: string };
 
@@ -26,6 +27,8 @@ export default function Home() {
   const [isShowingWelcomeText, setIsShowingWelcomeText] = useState(false);
 
   useEffect(() => {
+    let introRef = introTextRef;
+    let welcomeRef = welcomeTextRef;
     let introObserver: IntersectionObserver | null = null;
     let welcomeObserver: IntersectionObserver | null = null;
 
@@ -49,24 +52,24 @@ export default function Home() {
       });
     };
 
-    if (introTextRef.current) {
+    if (introRef.current) {
       introObserver = new IntersectionObserver(handleIntroTextAnimation, {
         threshold: 0.2,
       });
-      introObserver.observe(introTextRef.current);
+      introObserver.observe(introRef.current);
     }
 
-    if (welcomeTextRef.current) {
+    if (welcomeRef.current) {
       welcomeObserver = new IntersectionObserver(handleWelcomeTextAnimation);
-      welcomeObserver.observe(welcomeTextRef.current);
+      welcomeObserver.observe(welcomeRef.current);
     }
 
     return () => {
-      if (introTextRef.current && introObserver) {
-        introObserver.unobserve(introTextRef.current);
+      if (introRef.current && introObserver) {
+        introObserver.unobserve(introRef.current);
       }
-      if (welcomeTextRef.current && welcomeObserver) {
-        welcomeObserver.unobserve(welcomeTextRef.current);
+      if (welcomeRef.current && welcomeObserver) {
+        welcomeObserver.unobserve(welcomeRef.current);
       }
     };
   }, []);
@@ -142,7 +145,9 @@ export default function Home() {
           </div>
         </div>
         <div className={"absolute z-1 w-full h-full overflow-hidden"}>
-          <img
+          <Image
+            fill
+            sizes={"100vw"}
             src={"/nurburgring.jpeg"}
             className={" w-full h-full object-cover  blur-xs scale-110 "}
             alt={"nurburgring.jpeg"}
