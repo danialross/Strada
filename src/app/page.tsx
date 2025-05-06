@@ -65,18 +65,21 @@ export default function Home() {
       if (introTextRef.current && introObserver) {
         introObserver.unobserve(introTextRef.current);
       }
-      if (introTextRef.current && welcomeObserver) {
-        welcomeObserver.unobserve(introTextRef.current);
+      if (welcomeTextRef.current && welcomeObserver) {
+        welcomeObserver.unobserve(welcomeTextRef.current);
       }
     };
   }, []);
-
+  console.log(isShowingWelcomeText);
+  console.log(isShowingIntroText);
   return (
     <div className={" bg-primary flex flex-col justify-center items-center"}>
-      <div className={"w-full relative flex justify-center"}>
+      <div
+        className={"w-full relative flex justify-center"}
+        ref={welcomeTextRef}
+      >
         <div
-          className={`absolute  w-full max-w-[1100px] mobilePadding top-3/4 -translate-y-1/2 text-right ${isShowingWelcomeText ? "translate-x-0" : "-translate-x-[90vw]"} animateMovement`}
-          ref={welcomeTextRef}
+          className={`absolute w-full max-w-[1100px] mobilePadding top-3/4 -translate-y-1/2 text-right ${isShowingWelcomeText ? "translate-x-0" : "-translate-x-[90vw]"} animateMovement`}
         >
           <p className={"headerText"}>Enter the World of</p>
           <p className={"bannerText"}>Automotive Elegance</p>
@@ -97,10 +100,10 @@ export default function Home() {
         className={
           "w-full h-full min-h-[500px] relative flex justify-center bg-white"
         }
+        ref={introTextRef}
       >
         <div
           className={`z-5 w-full h-full max-w-[1100px] text-lg mobilePadding transition-all duration-200 ease-in-out ${isShowingIntroText ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-          ref={introTextRef}
         >
           <p className={"headerText"}>A Tribute to Automotive Excellence</p>
           <br />
