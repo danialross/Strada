@@ -75,13 +75,12 @@ export default function Home() {
     <div className={" bg-primary flex flex-col justify-center items-center"}>
       <div className={"w-full relative flex justify-center"}>
         <div
-          className={`absolute w-full max-w-[1100px] mobilePadding top-3/4 -translate-y-1/2 text-right ${isShowingWelcomeText ? "translate-x-0" : "-translate-x-full"} animateMovement`}
+          className={`absolute  w-full max-w-[1100px] mobilePadding top-3/4 -translate-y-1/2 text-right ${isShowingWelcomeText ? "translate-x-0" : "-translate-x-[90vw]"} animateMovement`}
           ref={welcomeTextRef}
         >
           <p className={"headerText"}>Enter the World of</p>
           <p className={"bannerText"}>Automotive Elegance</p>
         </div>
-
         <video
           autoPlay
           loop
