@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { IoIosClose } from "react-icons/io";
 import { ImageViewerProps } from "@/types";
 import Image from "next/image";
+import { THRESHOLD } from "@/constants";
 
 //parent needs to be relative
 //the IntersectionObserver is delayed to account for transitionAnimation overlay
@@ -33,13 +34,15 @@ export default function ImageViewer({
         if (entry.isIntersecting) {
           animationTimeout = setTimeout(
             () => setIsShowImage(true),
-            animationDelay,
+            animationDelay, //Overlay Duration Time
           );
         }
       });
     };
 
-    const observer = new IntersectionObserver(handleAppear, { threshold: 0.2 });
+    const observer = new IntersectionObserver(handleAppear, {
+      threshold: THRESHOLD,
+    });
     observer.observe(ref);
 
     return () => {

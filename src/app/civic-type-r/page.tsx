@@ -2,6 +2,7 @@ import { ImageViewerProps, SectionData } from "@/types";
 import Section from "@/components/Section";
 import ImageViewer from "@/components/ImageViewer";
 import Image from "next/image";
+import { INTRO_DELAY } from "@/constants";
 
 const images: ImageViewerProps[] = [
   {
@@ -89,7 +90,7 @@ export default function Page() {
               src={src}
               alt={alt}
               position={position}
-              animationDelay={index * 200}
+              animationDelay={index * 200 + INTRO_DELAY}
             />
           </div>
         ))}

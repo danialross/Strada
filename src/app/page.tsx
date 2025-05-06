@@ -2,6 +2,7 @@
 import ImageWithAnimation from "@/components/ImageWithAnimation";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { INTRO_DELAY, THRESHOLD } from "@/constants";
 
 type Logo = { src: string; alt: string };
 
@@ -41,7 +42,7 @@ export default function Home() {
     };
 
     const introObserver = new IntersectionObserver(handleIntroTextAnimation, {
-      threshold: 0.2,
+      threshold: THRESHOLD,
     });
     introObserver.observe(introRef);
 
@@ -54,12 +55,16 @@ export default function Home() {
     const welcomeRef = welcomeTextRef.current;
     if (!welcomeRef) return;
 
+    let animationTimeout: NodeJS.Timeout | null = null;
     const handleWelcomeTextAnimation: IntersectionObserverCallback = (
       entries,
     ) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          setIsShowingWelcomeText(true);
+          animationTimeout = setTimeout(
+            () => setIsShowingWelcomeText(true),
+            INTRO_DELAY,
+          );
         }
       });
     };
@@ -71,6 +76,9 @@ export default function Home() {
 
     return () => {
       welcomeObserver.unobserve(welcomeRef);
+      if (animationTimeout) {
+        clearTimeout(animationTimeout);
+      }
     };
   }, []);
 

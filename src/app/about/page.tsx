@@ -4,6 +4,7 @@ import { ImageViewerProps } from "@/types";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { THRESHOLD } from "@/constants";
 
 const images: ImageViewerProps[] = [
   {
@@ -25,7 +26,9 @@ export default function Page() {
   const [isShowingText, setIsShowingText] = useState(false);
 
   useEffect(() => {
-    let observer: IntersectionObserver | null = null;
+    const ref = textRef.current;
+    if (!ref) return;
+
     const handleShow: IntersectionObserverCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -33,15 +36,14 @@ export default function Page() {
         }
       });
     };
-    if (textRef.current) {
-      observer = new IntersectionObserver(handleShow, { threshold: 0.2 });
-      observer.observe(textRef.current);
-    }
+
+    const observer = new IntersectionObserver(handleShow, {
+      threshold: THRESHOLD,
+    });
+    observer.observe(ref);
 
     return () => {
-      if (observer && textRef.current) {
-        observer.unobserve(textRef.current);
-      }
+      observer.unobserve(ref);
     };
   }, []);
 
