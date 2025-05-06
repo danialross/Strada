@@ -58,7 +58,7 @@ export default function ImageViewer({
         src={src}
         alt={alt}
         fill
-        className={`${isShowImage ? "opacity-100" : "opacity-0"} object-cover ${position} hover:scale-115 animateAll`}
+        className={`${isShowImage ? "opacity-100" : "opacity-0"} object-cover ${position} hover:scale-115 transition-all duration-500 ease-in-out`}
         onClick={() => setIsShowOverlay(true)}
         ref={imageRef}
         sizes={"100%"}
