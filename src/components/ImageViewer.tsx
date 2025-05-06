@@ -4,6 +4,7 @@ import { IoIosClose } from "react-icons/io";
 import { ImageViewerProps } from "@/types";
 import Image from "next/image";
 import { THRESHOLD } from "@/constants";
+import { getAnimationDelay } from "@/util";
 
 //parent needs to be relative
 //the IntersectionObserver is delayed to account for transitionAnimation overlay
@@ -34,7 +35,7 @@ export default function ImageViewer({
         if (entry.isIntersecting) {
           animationTimeout = setTimeout(
             () => setIsShowImage(true),
-            animationDelay, //Overlay Duration Time
+            getAnimationDelay(animationDelay), //Overlay Duration Time
           );
         }
       });

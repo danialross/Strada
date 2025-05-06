@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { THRESHOLD } from "@/constants";
+import { getAnimationDelay } from "@/util";
 
 const images: ImageViewerProps[] = [
   {
@@ -158,7 +159,7 @@ export default function Page() {
               src={src}
               alt={alt}
               key={src}
-              animationDelay={index * 200}
+              animationDelay={getAnimationDelay(index)}
             />
           </div>
         ))}
