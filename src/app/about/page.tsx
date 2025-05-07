@@ -143,7 +143,7 @@ export default function Page() {
                 <Link
                   href={"https://danialross.vercel.app/"}
                   className={
-                    "animateMovement ml-6 hover:scale-110 flex justify-center items-center gap-6 bg-white text-primary rounded-md py-2 px-4"
+                    "animateMovement ml-6 hover:scale-110 flex justify-center items-center gap-6 py-2 px-4"
                   }
                 >
                   <Image
