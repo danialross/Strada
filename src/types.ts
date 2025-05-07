@@ -17,5 +17,8 @@ export type ImageViewerProps = {
   src: string;
   alt: string;
   position?: "object-left" | "object-right";
-  animationDelay?: number; // in milliseconds
+  animationDelayOnWeb: number;
+  animationDelayOnMobile: number;
+  hasIntroAnimationOnWeb: boolean;
+  hasIntroAnimationOnMobile: boolean;
 };

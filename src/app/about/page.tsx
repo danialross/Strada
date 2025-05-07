@@ -1,13 +1,12 @@
 "use client";
 import ImageViewer from "@/components/ImageViewer";
-import { ImageViewerProps } from "@/types";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { THRESHOLD } from "@/constants";
 import { getAnimationDelay } from "@/util";
 
-const images: ImageViewerProps[] = [
+const images = [
   {
     src: "/about5.webp",
     alt: "Subaru Impreza WRX",
@@ -28,23 +27,30 @@ export default function Page() {
 
   useEffect(() => {
     const ref = textRef.current;
+    let timeout: NodeJS.Timeout;
     if (!ref) return;
 
-    const handleShow: IntersectionObserverCallback = (entries) => {
+    const handleSlideText: IntersectionObserverCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          setIsShowingText(true);
+          timeout = setTimeout(
+            () => setIsShowingText(true),
+            getAnimationDelay(0, 0, true, false),
+          );
         }
       });
     };
 
-    const observer = new IntersectionObserver(handleShow, {
+    const observer = new IntersectionObserver(handleSlideText, {
       threshold: THRESHOLD,
     });
     observer.observe(ref);
 
     return () => {
       observer.unobserve(ref);
+      if (timeout) {
+        clearTimeout(timeout);
+      }
     };
   }, []);
 
@@ -77,7 +83,14 @@ export default function Page() {
           "relative h-[500px] col-span-1 md:h-auto md:w-full overflow-hidden"
         }
       >
-        <ImageViewer src={"/about2.webp"} alt={"BMW M3"} />
+        <ImageViewer
+          src={"/about2.webp"}
+          alt={"BMW M3"}
+          animationDelayOnWeb={0}
+          animationDelayOnMobile={0}
+          hasIntroAnimationOnWeb={true}
+          hasIntroAnimationOnMobile={true}
+        />
       </div>
       <div className={`col-span-2 min-h-[500px]`} ref={textRef}>
         <div
@@ -148,18 +161,20 @@ export default function Page() {
         </div>
       </div>
       <div
-        className={`w-full h-[500px] flex flex-col md:flex-row col-span-3 sectionGap`}
+        className={`w-full h-full flex flex-col md:flex-row col-span-3 sectionGap`}
       >
-        {images.map(({ src, alt }: ImageViewerProps, index) => (
+        {images.map(({ src, alt }, index) => (
           <div
-            className={"relative w-full md:w-1/3 h-full overflow-hidden"}
+            className={"relative w-full md:w-1/3 h-[500px] overflow-hidden"}
             key={src}
           >
             <ImageViewer
               src={src}
               alt={alt}
-              key={src}
-              animationDelay={getAnimationDelay(index)}
+              animationDelayOnWeb={index * 200}
+              animationDelayOnMobile={index * 200}
+              hasIntroAnimationOnWeb={false}
+              hasIntroAnimationOnMobile={false}
             />
           </div>
         ))}

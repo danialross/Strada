@@ -12,7 +12,10 @@ export default function ImageViewer({
   src,
   alt,
   position,
-  animationDelay = 0,
+  animationDelayOnWeb = 0,
+  animationDelayOnMobile = 0,
+  hasIntroAnimationOnWeb = false,
+  hasIntroAnimationOnMobile = false,
 }: ImageViewerProps) {
   const imageRef = useRef<HTMLImageElement | null>(null);
   const [isShowOverlay, setIsShowOverlay] = useState(false);
@@ -35,7 +38,12 @@ export default function ImageViewer({
         if (entry.isIntersecting) {
           animationTimeout = setTimeout(
             () => setIsShowImage(true),
-            getAnimationDelay(animationDelay), //Overlay Duration Time
+            getAnimationDelay(
+              animationDelayOnWeb,
+              animationDelayOnMobile,
+              hasIntroAnimationOnWeb,
+              hasIntroAnimationOnMobile,
+            ), //Overlay Duration Time
           );
         }
       });
@@ -52,7 +60,12 @@ export default function ImageViewer({
         clearTimeout(animationTimeout);
       }
     };
-  }, [animationDelay]);
+  }, [
+    animationDelayOnWeb,
+    animationDelayOnMobile,
+    hasIntroAnimationOnWeb,
+    hasIntroAnimationOnMobile,
+  ]);
   return (
     <>
       <Image
@@ -62,7 +75,7 @@ export default function ImageViewer({
         className={`${isShowImage ? "opacity-100" : "opacity-0"} object-cover ${position} hover:scale-115 transition-all duration-500 ease-in-out`}
         onClick={() => setIsShowOverlay(true)}
         ref={imageRef}
-        sizes={"100%"}
+        sizes={"100vw"}
       />
       <div
         className={`w-screen h-screen z-100 fixed inset-0 animateFade ${isShowOverlay ? "opacity-100" : "opacity-0 pointer-events-none"}  backdrop-blur-xs flex justify-center items-center`}

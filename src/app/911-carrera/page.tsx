@@ -1,9 +1,9 @@
-import { ImageViewerProps, SectionData } from "@/types";
+import { SectionData } from "@/types";
 import ImageViewer from "@/components/ImageViewer";
 import Section from "@/components/Section";
 import Image from "next/image";
 
-const images: ImageViewerProps[] = [
+const images = [
   {
     src: "/9113.webp",
     alt: "911 Carrera Rear",
@@ -75,7 +75,7 @@ export default function Page() {
         <div
           className={`w-full h-full flex flex-col md:flex-row justify-center items-center sectionGap`}
         >
-          {images.map(({ src, alt, position }: ImageViewerProps, index) => (
+          {images.map(({ src, alt }, index) => (
             <div
               className={
                 "w-full h-[300px] md:h-[400px] relative overflow-hidden"
@@ -85,8 +85,10 @@ export default function Page() {
               <ImageViewer
                 src={src}
                 alt={alt}
-                position={position}
-                animationDelay={index * 200}
+                animationDelayOnWeb={index * 200}
+                animationDelayOnMobile={0}
+                hasIntroAnimationOnWeb={true}
+                hasIntroAnimationOnMobile={index === 0}
               />
             </div>
           ))}

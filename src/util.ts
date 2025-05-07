@@ -1,12 +1,24 @@
 import { INTRO_DELAY } from "@/constants";
 
-export const getAnimationDelay = (delay: number): number => {
-  // first item in mobile view based on design
-  // first item will have to wait for intro animation because it is on screen but rest is not
-  if (delay === 0) {
-    return INTRO_DELAY;
-  } else if (typeof window !== "undefined" && window.innerWidth > 768) {
-    return delay + INTRO_DELAY;
+export const getAnimationDelay = (
+  delayOnWeb: number,
+  delayOnMobile: number,
+  hasIntroDelayOnWeb: boolean,
+  hasIntroDelayOnMobile: boolean,
+): number => {
+  const isOnMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
+  if (isOnMobile) {
+    if (hasIntroDelayOnMobile) {
+      return delayOnMobile + INTRO_DELAY;
+    }
+    return delayOnMobile;
   }
-  return 0;
+
+  // On Web
+  if (hasIntroDelayOnWeb) {
+    return delayOnWeb + INTRO_DELAY;
+  }
+
+  return delayOnWeb;
 };

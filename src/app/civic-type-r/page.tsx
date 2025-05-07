@@ -3,7 +3,7 @@ import Section from "@/components/Section";
 import ImageViewer from "@/components/ImageViewer";
 import Image from "next/image";
 
-const images: ImageViewerProps[] = [
+const images: Pick<ImageViewerProps, "src" | "alt" | "position">[] = [
   {
     src: "/typer1.webp",
     alt: "Civic Type R Front View",
@@ -80,7 +80,7 @@ export default function Page() {
       <div
         className={`w-full h-full md:h-[400px] flex flex-col md:flex-row justify-center items-center sectionGap`}
       >
-        {images.map(({ src, alt, position }: ImageViewerProps, index) => (
+        {images.map(({ src, alt, position }, index) => (
           <div
             className={"w-full h-[300px] md:h-[400px] relative overflow-hidden"}
             key={src}
@@ -88,8 +88,11 @@ export default function Page() {
             <ImageViewer
               src={src}
               alt={alt}
-              position={position}
-              animationDelay={index * 200}
+              {...(position && { position })}
+              animationDelayOnWeb={index * 200}
+              animationDelayOnMobile={0}
+              hasIntroAnimationOnWeb={true}
+              hasIntroAnimationOnMobile={index === 0}
             />
           </div>
         ))}
