@@ -16,6 +16,7 @@ export default function ImageViewer({
   animationDelayOnMobile = 0,
   hasIntroAnimationOnWeb = false,
   hasIntroAnimationOnMobile = false,
+  threshold = THRESHOLD,
 }: ImageViewerProps) {
   const imageRef = useRef<HTMLImageElement | null>(null);
   const [isShowOverlay, setIsShowOverlay] = useState(false);
@@ -53,7 +54,7 @@ export default function ImageViewer({
         });
       },
       {
-        threshold: THRESHOLD,
+        threshold: threshold,
       },
     );
 

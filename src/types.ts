@@ -17,6 +17,7 @@ export type ImageViewerProps = {
   src: string;
   alt: string;
   position?: "object-left" | "object-right";
+  threshold?: number; // between 0 - 1 that needs to be on screen to start animation
   animationDelayOnWeb: number;
   animationDelayOnMobile: number;
   hasIntroAnimationOnWeb: boolean;

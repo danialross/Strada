@@ -88,13 +88,14 @@ export default function Page() {
         <ImageViewer
           src={"/about2.webp"}
           alt={"BMW M3"}
+          threshold={1}
           animationDelayOnWeb={0}
           animationDelayOnMobile={0}
           hasIntroAnimationOnWeb={true}
-          hasIntroAnimationOnMobile={true}
+          hasIntroAnimationOnMobile={false}
         />
       </div>
-      <div className={`col-span-2 min-h-[500px]`} ref={textRef}>
+      <div className={`col-span-2 min-h-[500px] overflow-hidden`} ref={textRef}>
         <div
           className={` relative h-full flex items-center justify-center overflow-hidden animateMovement ${isShowingText ? "translate-x-0" : "translate-x-full"}`}
         >
