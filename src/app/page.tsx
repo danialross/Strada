@@ -2,7 +2,7 @@
 import ImageWithAnimation from "@/components/ImageWithAnimation";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { INTRO_DELAY, THRESHOLD } from "@/constants";
+import { getAnimationDelay } from "@/util";
 
 type Logo = { src: string; alt: string };
 
@@ -28,26 +28,30 @@ export default function Home() {
   const [isShowingWelcomeText, setIsShowingWelcomeText] = useState(false);
 
   useEffect(() => {
+    let timeout: NodeJS.Timeout;
     const introRef = introTextRef.current;
     if (!introRef) return;
 
-    const handleIntroTextAnimation: IntersectionObserverCallback = (
-      entries,
-    ) => {
+    const introObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          setIsShowingIntroText(true);
+          timeout = setTimeout(
+            () => {
+              setIsShowingIntroText(true);
+              introObserver.disconnect();
+            },
+            getAnimationDelay(0, 0, true, true),
+          );
         }
       });
-    };
-
-    const introObserver = new IntersectionObserver(handleIntroTextAnimation, {
-      threshold: THRESHOLD,
     });
     introObserver.observe(introRef);
 
     return () => {
-      introObserver.unobserve(introRef);
+      introObserver.disconnect();
+      if (timeout) {
+        clearTimeout(timeout);
+      }
     };
   }, []);
 
@@ -56,26 +60,24 @@ export default function Home() {
     if (!welcomeRef) return;
 
     let animationTimeout: NodeJS.Timeout | null = null;
-    const handleWelcomeTextAnimation: IntersectionObserverCallback = (
-      entries,
-    ) => {
+    const welcomeObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           animationTimeout = setTimeout(
-            () => setIsShowingWelcomeText(true),
-            INTRO_DELAY,
+            () => {
+              setIsShowingWelcomeText(true);
+              welcomeObserver.disconnect();
+            },
+            getAnimationDelay(0, 0, true, true),
           );
         }
       });
-    };
+    });
 
-    const welcomeObserver = new IntersectionObserver(
-      handleWelcomeTextAnimation,
-    );
     welcomeObserver.observe(welcomeRef);
 
     return () => {
-      welcomeObserver.unobserve(welcomeRef);
+      welcomeObserver.disconnect();
       if (animationTimeout) {
         clearTimeout(animationTimeout);
       }
@@ -187,7 +189,10 @@ export default function Home() {
                 key={src}
                 src={src}
                 alt={alt}
-                animationDelay={index * 250}
+                animationDelayOnWeb={index * 200}
+                animationDelayOnMobile={index * 200}
+                hasIntroAnimationOnWeb={false}
+                hasIntroAnimationOnMobile={false}
               />
             </div>
           ))}

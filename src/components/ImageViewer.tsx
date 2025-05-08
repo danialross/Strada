@@ -33,29 +33,34 @@ export default function ImageViewer({
     if (!ref) return;
 
     let animationTimeout: NodeJS.Timeout | null = null;
-    const handleAppear: IntersectionObserverCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          animationTimeout = setTimeout(
-            () => setIsShowImage(true),
-            getAnimationDelay(
-              animationDelayOnWeb,
-              animationDelayOnMobile,
-              hasIntroAnimationOnWeb,
-              hasIntroAnimationOnMobile,
-            ), //Overlay Duration Time
-          );
-        }
-      });
-    };
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animationTimeout = setTimeout(
+              () => {
+                setIsShowImage(true);
+                observer.disconnect();
+              },
+              getAnimationDelay(
+                animationDelayOnWeb,
+                animationDelayOnMobile,
+                hasIntroAnimationOnWeb,
+                hasIntroAnimationOnMobile,
+              ), //Overlay Duration Time
+            );
+          }
+        });
+      },
+      {
+        threshold: THRESHOLD,
+      },
+    );
 
-    const observer = new IntersectionObserver(handleAppear, {
-      threshold: THRESHOLD,
-    });
     observer.observe(ref);
 
     return () => {
-      observer.unobserve(ref);
+      observer.disconnect();
       if (animationTimeout) {
         clearTimeout(animationTimeout);
       }

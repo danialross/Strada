@@ -30,24 +30,26 @@ export default function Page() {
     let timeout: NodeJS.Timeout;
     if (!ref) return;
 
-    const handleSlideText: IntersectionObserverCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          timeout = setTimeout(
-            () => setIsShowingText(true),
-            getAnimationDelay(0, 0, true, false),
-          );
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(handleSlideText, {
-      threshold: THRESHOLD,
-    });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            timeout = setTimeout(
+              () => {
+                setIsShowingText(true);
+                observer.disconnect();
+              },
+              getAnimationDelay(0, 0, true, false),
+            );
+          }
+        });
+      },
+      { threshold: THRESHOLD },
+    );
     observer.observe(ref);
 
     return () => {
-      observer.unobserve(ref);
+      observer.disconnect();
       if (timeout) {
         clearTimeout(timeout);
       }
