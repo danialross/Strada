@@ -1,18 +1,25 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { getAnimationDelay } from "@/util";
 
 type ImageWithAnimationProps = {
   src: string;
   alt: string;
-  animationDelay: number; // in miliseconds
   className?: string;
+  animationDelayOnWeb: number;
+  animationDelayOnMobile: number;
+  hasIntroAnimationOnWeb: boolean;
+  hasIntroAnimationOnMobile: boolean;
 };
 
 export default function ImageWithAnimation({
   src,
   alt,
-  animationDelay = 0,
+  animationDelayOnWeb = 0,
+  animationDelayOnMobile = 0,
+  hasIntroAnimationOnWeb = false,
+  hasIntroAnimationOnMobile = false,
   className = "",
 }: ImageWithAnimationProps) {
   const imageRef = useRef<HTMLImageElement>(null);
@@ -26,9 +33,17 @@ export default function ImageWithAnimation({
     const handleAppear: IntersectionObserverCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          timeout = setTimeout(() => {
-            setIsShowingImage(true);
-          }, animationDelay);
+          timeout = setTimeout(
+            () => {
+              setIsShowingImage(true);
+            },
+            getAnimationDelay(
+              animationDelayOnWeb,
+              animationDelayOnMobile,
+              hasIntroAnimationOnWeb,
+              hasIntroAnimationOnMobile,
+            ),
+          );
         }
       });
     };
@@ -42,7 +57,12 @@ export default function ImageWithAnimation({
         clearTimeout(timeout);
       }
     };
-  }, [animationDelay]);
+  }, [
+    animationDelayOnWeb,
+    animationDelayOnMobile,
+    hasIntroAnimationOnWeb,
+    hasIntroAnimationOnMobile,
+  ]);
 
   return (
     <Image
