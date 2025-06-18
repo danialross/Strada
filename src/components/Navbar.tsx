@@ -27,7 +27,13 @@ export default function Navbar({ children }: NavbarProps) {
         />
       </div>
       <div className={"w-full h-full flex items-center justify-center"}>
-        <div className={"h-full flex items-center justify-center hoverEffect"}>
+        <Link
+          href={"/"}
+          onClick={handleCloseSidebar}
+          className={
+            "h-full flex items-center justify-center hoverEffect text-primary text-2xl"
+          }
+        >
           <svg
             version="1.1"
             viewBox="0 0 1920 1088"
@@ -85,15 +91,8 @@ export default function Navbar({ children }: NavbarProps) {
               fill="currentColor"
             />
           </svg>
-
-          <Link
-            className={"text-primary text-2xl"}
-            href={"/"}
-            onClick={handleCloseSidebar}
-          >
-            Strada
-          </Link>
-        </div>
+          Strada
+        </Link>
       </div>
       <Sidebar isVisible={isSidebarOpen} setIsVisible={setIsSidebarOpen} />
       {children}
