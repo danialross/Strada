@@ -43,7 +43,7 @@ const sections: SectionData[] = [
   },
   {
     header: "Interior",
-    body: "The driver-focused cockpit features red bucket seats, an Alcantara-wrapped steering wheel, and a digital instrument display tuned for performance metrics. The Honda LogR system provides real-time driving data, while a 9-inch touchscreen with wireless Apple CarPlay/Android Auto adds modern connectivity. Minimal yet functional, the FL5’s cabin is built to keep drivers engaged while offering everyday comfort.",
+    body: "The driver-centric cabin of the Corolla GR features GR-branded sports seats with enhanced bolstering, a leather-wrapped steering wheel, and a performance-themed digital gauge cluster. A dedicated GR drive mode selector tailors the car's behavior for spirited driving, while the 8-inch infotainment screen with wireless Apple CarPlay and Android Auto keeps tech at your fingertips. Blending everyday usability with motorsport-inspired touches, the interior delivers both excitement and comfort.",
     src: "/corollaInterior.jpg",
     alt: "Corolla Interior",
     imagePosition: "left",
