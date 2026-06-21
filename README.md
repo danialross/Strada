@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Strada | Engineered Excellence
+
+A digital showcase celebrating the artistry, engineering, and innovation behind some of the world's most exciting cars. Strada is a tribute to automotive craftsmanship — combining cinematic visuals, dynamic animations, and immersive layouts to bring each vehicle to life.
+
+**Live site:** [stradamotors.vercel.app](https://stradamotors.vercel.app)
+
+> This project is a personal exploration of design and frontend development, built to showcase visual storytelling and animation skills. All imagery featured remains the property of its respective owners and is used solely for illustrative, non-commercial purposes.
+
+## Features
+
+- **Cinematic homepage** — full-screen hero video introduction to the showcase
+- **Brand showcase** — dedicated sections for Honda, Toyota, and Porsche
+- **Individual car pages** — detailed pages for featured models, including:
+  - Honda Civic Type R, S2000
+  - Toyota GR Corolla, GR Yaris
+  - Porsche 911 Carrera, 718 Cayman
+- **About page** — project background and context
+- **Dynamic animations** — interactive, motion-driven UI to highlight each vehicle's design and presence
+- **Responsive design** — consistent experience across devices
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Next.js |
+| Language | TypeScript |
+| UI Library | React |
+| Styling | Tailwind CSS |
+| Icons | React Icons |
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- npm
+
+### Installation
+
+```bash
+git clone https://github.com/<your-username>/strada.git
+cd strada
+npm install
+```
+
+### Running Locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The site will be available at `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+## Disclaimer
 
-To learn more about Next.js, take a look at the following resources:
+All vehicle imagery and brand logos featured in this project are the property of their respective owners and are used here for illustrative, non-commercial, portfolio purposes only. No copyright infringement is intended.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is currently unlicensed. Add a license here if you intend to open source it.
